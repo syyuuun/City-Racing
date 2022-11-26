@@ -135,20 +135,48 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Bmw.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="CarManager.cpp" />
+    <ClCompile Include="EndScene.cpp" />
     <ClCompile Include="GameFrameWork.cpp" />
     <ClCompile Include="Light.cpp" />
+    <ClCompile Include="Porsche.cpp" />
+    <ClCompile Include="SelectScene.cpp" />
+    <ClCompile Include="TitleScene.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Obstacle.cpp" />
+    <ClCompile Include="PlayScene.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
+    <ClCompile Include="Shader.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bmw.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="CarManager.h" />
     <ClInclude Include="Constant.h" />
     <ClInclude Include="Define.h" />
+    <ClInclude Include="EndScene.h" />
     <ClInclude Include="Enum.h" />
     <ClInclude Include="GameFrameWork.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="Porsche.h" />
+    <ClInclude Include="SelectScene.h" />
+    <ClInclude Include="TitleScene.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Obstacle.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="PlayScene.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="SceneManager.h" />
+    <ClInclude Include="Shader.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="fragment.glsl" />
+    <None Include="vertex.glsl" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
