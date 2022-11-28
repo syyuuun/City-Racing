@@ -82,10 +82,24 @@ void Shader::checkCompileError(const GLuint& shaderType, const char* name)
 
 void Shader::glGenerate()
 {
-	glGenVertexArrays(1, &(CarManager::getInstance()->currentCar->vao));
-	glGenBuffers(1, &(CarManager::getInstance()->currentCar->vertexVbo));
-	glGenBuffers(1, &(CarManager::getInstance()->currentCar->normalVbo));
-	glGenBuffers(1, &(CarManager::getInstance()->currentCar->colorVbo));
+	//if (nullptr != CarManager::getInstance()->currentCar) {
+	//	glDeleteVertexArrays(1, &(CarManager::getInstance()->currentCar->vao));
+	//	glDeleteBuffers(1, &(CarManager::getInstance()->currentCar->vertexVbo));
+	//	glDeleteBuffers(1, &(CarManager::getInstance()->currentCar->normalVbo));
+	//	glDeleteBuffers(1, &(CarManager::getInstance()->currentCar->colorVbo));
+	//}
+	//
+	//glGenVertexArrays(1, &(CarManager::getInstance()->currentCar->vao));
+	//glGenBuffers(1, &(CarManager::getInstance()->currentCar->vertexVbo));
+	//glGenBuffers(1, &(CarManager::getInstance()->currentCar->normalVbo));
+	//glGenBuffers(1, &(CarManager::getInstance()->currentCar->colorVbo));
+
+	for (size_t i = 0; i < 2; ++i) {
+		glGenVertexArrays(1, &(CarManager::getInstance()->cars[i]->vao));
+		glGenBuffers(1, &(CarManager::getInstance()->cars[i]->vertexVbo));
+		glGenBuffers(1, &(CarManager::getInstance()->cars[i]->normalVbo));
+		glGenBuffers(1, &(CarManager::getInstance()->cars[i]->colorVbo));
+	}
 }
 
 void Shader::initShader()
@@ -110,35 +124,36 @@ void Shader::initBuffer()
 {
 	// Car
 	{
-		glBindVertexArray(CarManager::getInstance()->currentCar->vao);
-		glBindBuffer(GL_ARRAY_BUFFER, CarManager::getInstance()->currentCar->vertexVbo);
-		glBufferData(GL_ARRAY_BUFFER, CarManager::getInstance()->currentCar->verticies.size() * sizeof(glm::vec3), CarManager::getInstance()->currentCar->verticies.data(), GL_STATIC_DRAW);
-		GLint pAttribute = glGetAttribLocation(shaderProgram, "vPos");
-		glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-		glEnableVertexAttribArray(pAttribute);
+		for (size_t i = 0; i < 2; ++i) {
+			glBindVertexArray(CarManager::getInstance()->cars[i]->vao);
+			glBindBuffer(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->vertexVbo);
+			glBufferData(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->verticies.size() * sizeof(glm::vec3), CarManager::getInstance()->cars[i]->verticies.data(), GL_STATIC_DRAW);
+			GLuint pAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vPos");
+			glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+			glEnableVertexAttribArray(pAttribute);
 
-		glBindBuffer(GL_ARRAY_BUFFER, CarManager::getInstance()->currentCar->normalVbo);
-		glBufferData(GL_ARRAY_BUFFER, CarManager::getInstance()->currentCar->normals.size() * sizeof(glm::vec3), CarManager::getInstance()->currentCar->normals.data(), GL_STATIC_DRAW);
-		GLint nAttribute = glGetAttribLocation(shaderProgram, "vNormal");
-		glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-		glEnableVertexAttribArray(nAttribute);
+			glBindBuffer(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->normalVbo);
+			glBufferData(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->normals.size() * sizeof(glm::vec3), CarManager::getInstance()->cars[i]->normals.data(), GL_STATIC_DRAW);
+			GLint nAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vNormal");
+			glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+			glEnableVertexAttribArray(nAttribute);
 
-		glBindBuffer(GL_ARRAY_BUFFER, CarManager::getInstance()->currentCar->colorVbo);
-		glBufferData(GL_ARRAY_BUFFER, CarManager::getInstance()->currentCar->colors.size() * sizeof(glm::vec3), CarManager::getInstance()->currentCar->colors.data(), GL_STATIC_DRAW);
-		GLint cAttribute = glGetAttribLocation(shaderProgram, "vColor");
-		glVertexAttribPointer(cAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-		glEnableVertexAttribArray(cAttribute);
+			glBindBuffer(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->colorVbo);
+			glBufferData(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->colors.size() * sizeof(glm::vec3), CarManager::getInstance()->cars[i]->colors.data(), GL_STATIC_DRAW);
+			GLint cAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vColor");
+			glVertexAttribPointer(cAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+			glEnableVertexAttribArray(cAttribute);
+		}
+		GLuint lightPosLocation = glGetUniformLocation(Shader::getInstance()->getShaderProgram(), "lightPos"); // lightPos 전달 
+		glUniform3f(lightPosLocation, Light::getInstance()->getPosition().x, Light::getInstance()->getPosition().y, Light::getInstance()->getPosition().z);
+		GLuint lightColorLocation = glGetUniformLocation(Shader::getInstance()->getShaderProgram(), "lightColor"); // lightColor 전달 
+		glUniform3f(lightColorLocation, Light::getInstance()->getLightColor().x, Light::getInstance()->getLightColor().y, Light::getInstance()->getLightColor().z);
+		GLuint viewPosLocation = glGetUniformLocation(Shader::getInstance()->getShaderProgram(), "viewPos"); // viewPos 값 전달: 카메라 위치 
+		glUniform3f(viewPosLocation, Camera::getInstance()->getPositionVector().x, Camera::getInstance()->getPositionVector().y, Camera::getInstance()->getPositionVector().z);
 	}
 
 	// Light
-	{
-		GLuint lightPosLocation = glGetUniformLocation(shaderProgram, "lightPos"); // lightPos 전달 
-		glUniform3f(lightPosLocation, Light::getInstance()->getPosition().x, Light::getInstance()->getPosition().y, Light::getInstance()->getPosition().z);
-		GLuint lightColorLocation = glGetUniformLocation(shaderProgram, "lightColor"); // lightColor 전달 
-		glUniform3f(lightColorLocation, Light::getInstance()->getLightColor().x, Light::getInstance()->getLightColor().y, Light::getInstance()->getLightColor().z);
-		GLuint viewPosLocation = glGetUniformLocation(shaderProgram, "viewPos"); // viewPos 값 전달: 카메라 위치 
-		glUniform3f(viewPosLocation, Camera::getInstance()->getPositionVector().x, Camera::getInstance()->getPositionVector().y, Camera::getInstance()->getPositionVector().z);
-	}
+
 }
 
 void Shader::release()
