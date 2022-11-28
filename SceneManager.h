@@ -8,9 +8,15 @@
 #include "EndScene.h"
 
 class SceneManager {
+protected:
+	enum{ MaxNumOfScene = 4 };
 private:
 	static SceneManager* pInst;
-	Scene* currentScene;
+	static GLuint currentSceneIndex;
+	Scene* currentScene{ nullptr };
+	std::vector<Scene*> scenes;
+public:
+	enum class SceneType { TITLE = 0, SELECT, PLAY, END };
 private:
 	SceneManager();
 public:

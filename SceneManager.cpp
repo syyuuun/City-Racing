@@ -4,7 +4,13 @@ SceneManager* SceneManager::pInst = nullptr;
 
 SceneManager::SceneManager()
 {
-	currentScene = new TitleScene;
+	scenes.emplace_back(new TitleScene);
+	scenes.emplace_back(new SelectScene);
+	scenes.emplace_back(new PlayScene);
+	scenes.emplace_back(new EndScene);
+	
+	currentScene = scenes[GLuint(SceneManager::SceneType::TITLE)];
+	
 	currentScene->initialize();
 }
 
@@ -40,29 +46,7 @@ void SceneManager::render()
 
 void SceneManager::changeScene(SceneType sceneType)
 {
-	if (nullptr != currentScene) {
-		delete currentScene;
-		currentScene = nullptr;
-	}
-
-	switch (sceneType)
-	{
-	case SceneType::TITLE:
-		currentScene = new TitleScene;
-		break;
-	case SceneType::SELECT:
-		currentScene = new SelectScene;
-		break;
-	case SceneType::PLAY:
-		currentScene = new PlayScene;
-		break;
-	case SceneType::END:
-		currentScene = new EndScene;
-		break;
-	default:
-		break;
-	}
-
+	currentScene = scenes[GLuint(sceneType)];
 	currentScene->initialize();
 }
 
