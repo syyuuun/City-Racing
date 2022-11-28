@@ -4,7 +4,7 @@
 
 class Bmw : public Car {
 public:
-	Bmw() = default;
+	Bmw();
 
 	virtual void initialize() override;
 
