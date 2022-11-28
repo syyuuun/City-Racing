@@ -1,9 +1,12 @@
 #include "Porsche.h"
 
-void Porsche::initialize()
+Porsche::Porsche()
 {
 	readObj("Resources/Car/Porsche_911_GT2.obj");
+}
 
+void Porsche::initialize()
+{
 	scaleVector = glm::vec3{ 1.0f,1.0f,2.0f };
 	positionVector = glm::vec3{ 0.0f,0.0f,0.0f };
 }
@@ -138,6 +141,15 @@ void Porsche::inputMouse(int button, int state, int x, int y)
 
 void Porsche::update()
 {
+	GLuint pAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vPos");
+	glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+	glEnableVertexAttribArray(pAttribute);
+	GLint nAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vNormal");
+	glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+	glEnableVertexAttribArray(nAttribute);
+	GLint cAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vColor");
+	glVertexAttribPointer(cAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+	glEnableVertexAttribArray(cAttribute);
 	rotationDegree += 1.0f;
 }
 
