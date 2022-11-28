@@ -3,7 +3,7 @@
 
 class Porsche : public Car {
 public:
-	Porsche() = default;
+	Porsche();
 
 	virtual void initialize() override;
 
