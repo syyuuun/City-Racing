@@ -17,7 +17,7 @@ int main(int argc, char** argv)
 	glewExperimental = GL_TRUE;
 
 	if (GLEW_OK != glewInit()) {
-		std::cerr << "Unable to initialize GLEW" << std::endl;
+		std::cerr << "Unable to initialize GLEW" << "\n";
 		exit(EXIT_FAILURE);
 	}
 	else
