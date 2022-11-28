@@ -10,7 +10,7 @@ void TitleScene::inputKeyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 	case VK_SPACE:
-		SceneManager::getInstance()->changeScene(SceneType::SELECT);
+		SceneManager::getInstance()->changeScene(SceneManager::SceneType::SELECT);
 		break;
 	default:
 		break;
@@ -29,7 +29,8 @@ void TitleScene::inputMouse(int button, int state, int x, int y)
 
 void TitleScene::update()
 {
-
+	Camera::getInstance()->update();
+	Light::getInstance()->update();
 }
 
 void TitleScene::render()
