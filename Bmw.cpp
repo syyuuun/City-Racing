@@ -2,7 +2,8 @@
 
 Bmw::Bmw()
 {
-	readObj("Resources/Car/BMW_M3_GTR.obj");
+	//readObj("Resources/Car/BMW_M3_GTR.obj");
+	readObj("Car/BMW_M3_GTR.obj");
 }
 
 void Bmw::initialize()
@@ -133,6 +134,21 @@ void Bmw::inputKeyboard(unsigned char key, int x, int y)
 
 void Bmw::inputSpecialKeyboard(int key, int x, int y)
 {
+	switch (key)
+	{
+	case GLUT_KEY_LEFT:
+		break;
+	case GLUT_KEY_RIGHT:
+		break;
+	case GLUT_KEY_UP:
+		positionVector.z -= 0.1f;
+		break;
+	case GLUT_KEY_DOWN:
+		positionVector.z += 0.1f;
+		break;
+	default:
+		break;
+	}
 }
 
 void Bmw::inputMouse(int button, int state, int x, int y)

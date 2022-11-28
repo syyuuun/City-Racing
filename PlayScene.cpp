@@ -29,15 +29,7 @@ void PlayScene::inputKeyboard(unsigned char key, int x, int y)
 
 void PlayScene::inputSpecialKeyboard(int key, int x, int y)
 {
-	switch (key)
-	{
-	case GLUT_KEY_LEFT:
-		break;
-	case GLUT_KEY_RIGHT:
-		break;
-	default:
-		break;
-	}
+	CarManager::getInstance()->inputSpecialKeyboard(key, x, y);
 }
 
 void PlayScene::inputMouse(int button, int state, int x, int y)

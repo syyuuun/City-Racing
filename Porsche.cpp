@@ -2,7 +2,8 @@
 
 Porsche::Porsche()
 {
-	readObj("Resources/Car/Porsche_911_GT2.obj");
+	//readObj("Resources/Car/Porsche_911_GT2.obj");
+	readObj("Car/Porsche_911_GT2.obj");
 }
 
 void Porsche::initialize()
@@ -133,6 +134,21 @@ void Porsche::inputKeyboard(unsigned char key, int x, int y)
 
 void Porsche::inputSpecialKeyboard(int key, int x, int y)
 {
+	switch (key)
+	{
+	case GLUT_KEY_LEFT:
+		break;
+	case GLUT_KEY_RIGHT:
+		break;
+	case GLUT_KEY_UP:
+		positionVector.z -= 0.1f;
+		break;
+	case GLUT_KEY_DOWN:
+		positionVector.z += 0.1f;
+		break;
+	default:
+		break;
+	}
 }
 
 void Porsche::inputMouse(int button, int state, int x, int y)
