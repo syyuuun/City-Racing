@@ -10,7 +10,7 @@ void EndScene::inputKeyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 	case VK_ESCAPE:
-		SceneManager::getInstance()->changeScene(SceneType::TITLE);
+		SceneManager::getInstance()->changeScene(SceneManager::SceneType::TITLE);
 		break;
 	default:
 		break;
