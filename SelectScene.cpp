@@ -3,8 +3,6 @@
 void SelectScene::initialize()
 {
 	std::cout << "Enter Select Scene" << "\n";
-
-	CarManager::getInstance()->initialize();
 }
 
 void SelectScene::inputKeyboard(unsigned char key, int x, int y)
@@ -12,10 +10,11 @@ void SelectScene::inputKeyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 	case VK_ESCAPE:
-		SceneManager::getInstance()->changeScene(SceneType::TITLE);
+		SceneManager::getInstance()->changeScene(SceneManager::SceneType::TITLE);
 		break;
 	case VK_RETURN:
-		SceneManager::getInstance()->changeScene(SceneType::PLAY);
+		//CarManager::getInstance()->select(curCarIndex);
+		SceneManager::getInstance()->changeScene(SceneManager::SceneType::PLAY);
 		break;
 	default:
 		break;
@@ -46,6 +45,8 @@ void SelectScene::inputMouse(int button, int state, int x, int y)
 void SelectScene::update()
 {
 	CarManager::getInstance()->update();
+	Camera::getInstance()->update();
+	Light::getInstance()->update();
 }
 
 void SelectScene::render()
