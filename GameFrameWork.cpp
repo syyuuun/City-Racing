@@ -17,7 +17,7 @@ GameFrameWork* GameFrameWork::getInstance()
 
 GLvoid GameFrameWork::initialize()
 {
-	// 모든 객체 초기화는 여기서 진행
+	CarManager::getInstance()->initialize();
 	Shader::getInstance()->glGenerate();
 	Shader::getInstance()->initBuffer();
 	Shader::getInstance()->initShader();
@@ -28,9 +28,7 @@ GLvoid GameFrameWork::renderScene()
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glEnable(GL_DEPTH_TEST);
-
 	Shader::getInstance()->initBuffer();
-	Camera::getInstance()->update();
 	SceneManager::getInstance()->render();
 
 	glutSwapBuffers();
