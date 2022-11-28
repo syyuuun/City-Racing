@@ -13,10 +13,15 @@ private:
 	static CarManager* pInst;
 	CarType curretCarType{ CarType::BMW };
 	Car* currentCar{ nullptr };
+	enum { MaxNumOfCar = 10 };// 최대 차량 개수
+	size_t nCar; // 등록된 차량 개수
+	std::vector<Car*> cars;
 private:
 	CarManager();
 public:
 	void initialize();
+
+	void select();
 
 	void inputKeyboard(unsigned char key, int x, int y);
 
@@ -29,6 +34,8 @@ public:
 	void render();
 
 	void changeCar(CarType carType);
+
+	size_t getNCar();
 public:
 	static CarManager* getInstance();
 	friend class Shader;

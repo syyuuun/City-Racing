@@ -4,20 +4,26 @@ CarManager* CarManager::pInst = nullptr;
 
 CarManager::CarManager()
 {
-	if (nullptr == currentCar) {
-		currentCar = new Bmw;
-		curretCarType = CarType::BMW;
+	cars.emplace_back(new Bmw);
+	cars.emplace_back(new Porsche);
+	
+	// 수정 필요
+	nCar = 2;
+
+	for (size_t i = 0; i < nCar; ++i) {
+		cars[i]->initialize();
 	}
-	currentCar->initialize();
+
+	currentCar = cars[0];
 }
 
 void CarManager::initialize()
 {
-	if (nullptr == currentCar) {
-		currentCar = new Bmw;
-		curretCarType = CarType::BMW;
-	}
-	currentCar->initialize();
+}
+
+void CarManager::select()
+{
+
 }
 
 void CarManager::inputKeyboard(unsigned char key, int x, int y)
@@ -47,26 +53,11 @@ void CarManager::render()
 
 void CarManager::changeCar(CarType carType)
 {
-	if (nullptr != currentCar) {
-		delete currentCar;
-		currentCar = nullptr;
-	}
-
-	switch (carType)
-	{
-	case CarManager::CarType::BMW:
-		currentCar = new Bmw;
-		break;
-	case CarManager::CarType::PORSCHE:
-		currentCar = new Porsche;
-		break;
-	default:
-		break;
-	}
-	curretCarType = carType;
+	currentCar = cars[GLuint(carType)];
 	currentCar->initialize();
-	Shader::getInstance()->glGenerate();
 }
+
+size_t CarManager::getNCar() { return nCar; }
 
 CarManager* CarManager::getInstance()
 {
