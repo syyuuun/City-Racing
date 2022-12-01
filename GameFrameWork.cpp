@@ -19,9 +19,8 @@ GLvoid GameFrameWork::initialize()
 {
 	CarManager::getInstance()->initialize();
 	Shader::getInstance()->glGenerate();
-	Shader::getInstance()->initShader();
-	Shader::getInstance()->initTexture();
 	Shader::getInstance()->initBuffer();
+	Shader::getInstance()->initShader();
 }
 
 GLvoid GameFrameWork::renderScene()

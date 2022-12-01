@@ -36,9 +36,6 @@ public:
 	void changeCar(CarType carType);
 
 	size_t getNCar();
-
-	void release();
-
 public:
 	static CarManager* getInstance();
 	friend class Shader;
