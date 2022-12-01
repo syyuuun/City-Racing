@@ -2,7 +2,7 @@
 
 Porsche::Porsche()
 {
-	readObj("Resources/Car/Porsche_911_GT2.obj");
+	readObj("Car/Porsche_911_GT2.obj");
 	//readObj("Car/Porsche_911_GT2.obj");
 }
 
@@ -142,6 +142,44 @@ void Porsche::inputMouse(int button, int state, int x, int y)
 
 void Porsche::update()
 {
+	if (GetAsyncKeyState(VK_UP) & 0x8000) {
+		if (speed <= 0.3f)
+			speed += 0.01f;
+	}
+	else if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
+		if (speed >= -0.2f)
+			speed -= 0.01f;
+	}
+	else {
+		if (speed < 0) {
+			speed += 0.001f;
+			if (speed >= 0)
+				speed = 0;
+		}
+		else {
+			speed -= 0.001f;
+			if (speed <= 0)
+				speed = 0;
+		}
+	}
+	if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
+		if (rotationDegree >= 70.f) {
+			rotationDegree -= 1.f;
+		}
+		positionVector.x += 0.1f;
+	}
+	else if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
+		if (rotationDegree <= 110.f) {
+			rotationDegree += 1.f;
+		}
+		positionVector.x -= 0.1f;
+	}
+	else {
+		rotationDegree = 90.f;
+	}
+	positionVector.z -= speed;
+	Camera::getInstance()->getPositionVector().z -= speed;
+	Camera::getInstance()->getLookVector().z -= speed;
 	rotationDegree += 1.0f;
 }
 
