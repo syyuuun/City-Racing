@@ -60,6 +60,14 @@ void CarManager::changeCar(CarType carType)
 
 size_t CarManager::getNCar() { return nCar; }
 
+void CarManager::release()
+{
+	if (nullptr != pInst) {
+		delete pInst;
+		pInst = nullptr;
+	}
+}
+
 CarManager* CarManager::getInstance()
 {
 	if (nullptr == pInst)
