@@ -20,3 +20,11 @@ void Light::update() const
 	GLuint viewPosLocation = glGetUniformLocation(Shader::getInstance()->getShaderProgram(), "viewPos"); // viewPos 값 전달: 카메라 위치 
 	glUniform3f(viewPosLocation, Camera::getInstance()->getPositionVector().x, Camera::getInstance()->getPositionVector().y, Camera::getInstance()->getPositionVector().z);
 }
+
+void Light::release()
+{
+	if (nullptr != pInst) {
+		delete pInst;
+		pInst = nullptr;
+	}
+}

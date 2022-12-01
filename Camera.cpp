@@ -54,3 +54,11 @@ void Camera::update()
 	glUniformMatrix4fv(viewTrasnformLocation, 1, GL_FALSE, &viewMatrix[0][0]);
 	glUniformMatrix4fv(projectionTransformLocation, 1, GL_FALSE, &projectionMatrix[0][0]);
 }
+
+void Camera::release()
+{
+	if (nullptr != pInst) {
+		delete pInst;
+		pInst = nullptr;
+	}
+}
