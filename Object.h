@@ -16,6 +16,11 @@ protected:
 	GLuint normalVbo;
 	GLuint colorVbo;
 	GLuint uvVbo;
+	GLuint texture;
+	GLuint transformLocation;
+
+	glm::vec3 positionVector{ 0.0f,0.0f,0.0f };
+	glm::vec3 scaleVector{ 0.0f,0.0f,0.0f };
 	
 	bool isObjInit{ false };
 public:

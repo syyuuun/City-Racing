@@ -2,8 +2,8 @@
 
 Porsche::Porsche()
 {
-	//readObj("Resources/Car/Porsche_911_GT2.obj");
-	readObj("Car/Porsche_911_GT2.obj");
+	readObj("Resources/Car/Porsche_911_GT2.obj");
+	//readObj("Car/Porsche_911_GT2.obj");
 }
 
 void Porsche::initialize()
@@ -142,54 +142,7 @@ void Porsche::inputMouse(int button, int state, int x, int y)
 
 void Porsche::update()
 {
-	if (GetAsyncKeyState(VK_UP) & 0x8000) {
-		if (speed <= 0.3f)
-			speed += 0.01f;
-	}
-	else if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
-		if (speed >= -0.2f)
-			speed -= 0.01f;
-	}
-	else {
-		if (speed < 0) {
-			speed += 0.001f;
-			if (speed >= 0)
-				speed = 0;
-		}
-		else {
-			speed -= 0.001f;
-			if (speed <= 0)
-				speed = 0;
-		}
-	}
-	if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
-		if (rotationDegree >= -20.f) {
-			rotationDegree -= 1.f;
-		}
-		positionVector.x += 0.1f;
-	}
-	else if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-		if (rotationDegree <= 20.f) {
-			rotationDegree += 1.f;
-		}
-		positionVector.x -= 0.1f;
-	}
-	else {
-		rotationDegree = 0.0;
-	}
-	positionVector.z -= speed;
-	// Camera::getInstance()->getPositionVector().z -= speed; 맵이 없어서 카메라가 같이 움직이면 객체가 안 움직이는 것처럼 보임
-	// Camera::getInstance()->getLookVector().z -= speed;
-	GLuint pAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vPos");
-	glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-	glEnableVertexAttribArray(pAttribute);
-	GLint nAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vNormal");
-	glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-	glEnableVertexAttribArray(nAttribute);
-	GLint cAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vColor");
-	glVertexAttribPointer(cAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-	glEnableVertexAttribArray(cAttribute);
-	//rotationDegree += 1.0f;
+	rotationDegree += 1.0f;
 }
 
 void Porsche::render()
@@ -207,6 +160,7 @@ void Porsche::render()
 	GLuint transformLocation = glGetUniformLocation(Shader::getInstance()->getShaderProgram(), "modelTransform");
 	glUniformMatrix4fv(transformLocation, 1, GL_FALSE, glm::value_ptr(transformMatrix));
 	glBindVertexArray(vao);
+	glBindTexture(GL_TEXTURE_2D, texture);
 	glDrawArrays(GL_TRIANGLES, 0, verticies.size());
 }
 

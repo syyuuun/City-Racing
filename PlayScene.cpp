@@ -4,6 +4,7 @@ void PlayScene::initialize()
 {
 	std::cout << "Enter Play Scene" << "\n";	
 	CarManager::getInstance()->initialize();
+	BackGround::getInstance()->setBGType(BackGround::BGType::PLAY);
 	// Road Load
 	 
 	// Obstacle Road
@@ -52,6 +53,9 @@ void PlayScene::update()
 
 void PlayScene::render()
 {
+	// BackGround render
+	BackGround::getInstance()->render();
+
 	// Road render
 
 	// Obstacle render

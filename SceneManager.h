@@ -6,6 +6,7 @@
 #include "SelectScene.h"
 #include "PlayScene.h"
 #include "EndScene.h"
+#include "BackGround.h"
 
 class SceneManager {
 protected:

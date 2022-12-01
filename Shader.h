@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "Light.h"
 #include "CarManager.h"
+#include "BackGround.h"
 
 class Shader {
 private:
@@ -30,6 +31,8 @@ public:
 
 	void initShader();
 
+	void initTexture();
+
 	void initBuffer();
 
 	void release();
@@ -37,4 +40,5 @@ public:
 	friend class Camera;
 	friend class Light;
 	friend class CarManager;
+	friend class BackGround;
 };

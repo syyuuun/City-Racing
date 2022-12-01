@@ -4,6 +4,7 @@ void SelectScene::initialize()
 {
 	std::cout << "Enter Select Scene" << "\n";
 	CarManager::getInstance()->initialize();
+	BackGround::getInstance()->setBGType(BackGround::BGType::SELECT);
 }
 
 void SelectScene::inputKeyboard(unsigned char key, int x, int y)
@@ -14,7 +15,6 @@ void SelectScene::inputKeyboard(unsigned char key, int x, int y)
 		SceneManager::getInstance()->changeScene(SceneManager::SceneType::TITLE);
 		break;
 	case VK_RETURN:
-		//CarManager::getInstance()->select(curCarIndex);
 		SceneManager::getInstance()->changeScene(SceneManager::SceneType::PLAY);
 		break;
 	default:
@@ -45,13 +45,14 @@ void SelectScene::inputMouse(int button, int state, int x, int y)
 
 void SelectScene::update()
 {
-	// CarManager::getInstance()->update();
+	CarManager::getInstance()->update();
 	Camera::getInstance()->update();
 	Light::getInstance()->update();
 }
 
 void SelectScene::render()
 {
+	BackGround::getInstance()->render();
 	CarManager::getInstance()->render();
 }
 

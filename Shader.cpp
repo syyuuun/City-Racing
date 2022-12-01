@@ -1,5 +1,8 @@
 #include "Shader.h"
 
+#define STB_IMAGE_IMPLEMENTATION
+#include "stb_image.h"
+
 Shader* Shader::pInst = nullptr;
 
 Shader::Shader()
@@ -82,23 +85,20 @@ void Shader::checkCompileError(const GLuint& shaderType, const char* name)
 
 void Shader::glGenerate()
 {
-	//if (nullptr != CarManager::getInstance()->currentCar) {
-	//	glDeleteVertexArrays(1, &(CarManager::getInstance()->currentCar->vao));
-	//	glDeleteBuffers(1, &(CarManager::getInstance()->currentCar->vertexVbo));
-	//	glDeleteBuffers(1, &(CarManager::getInstance()->currentCar->normalVbo));
-	//	glDeleteBuffers(1, &(CarManager::getInstance()->currentCar->colorVbo));
-	//}
-	//
-	//glGenVertexArrays(1, &(CarManager::getInstance()->currentCar->vao));
-	//glGenBuffers(1, &(CarManager::getInstance()->currentCar->vertexVbo));
-	//glGenBuffers(1, &(CarManager::getInstance()->currentCar->normalVbo));
-	//glGenBuffers(1, &(CarManager::getInstance()->currentCar->colorVbo));
+	glGenVertexArrays(1, &(BackGround::getInstance()->vao));
+	glGenBuffers(1, &(BackGround::getInstance()->vertexVbo));
+	glGenBuffers(1, &(BackGround::getInstance()->normalVbo));
+	glGenBuffers(1, &(BackGround::getInstance()->colorVbo));
+	glGenBuffers(1, &(BackGround::getInstance()->uvVbo));
+	glGenTextures(4, (BackGround::getInstance()->textures));
 
 	for (size_t i = 0; i < 2; ++i) {
 		glGenVertexArrays(1, &(CarManager::getInstance()->cars[i]->vao));
 		glGenBuffers(1, &(CarManager::getInstance()->cars[i]->vertexVbo));
 		glGenBuffers(1, &(CarManager::getInstance()->cars[i]->normalVbo));
 		glGenBuffers(1, &(CarManager::getInstance()->cars[i]->colorVbo));
+		glGenBuffers(1, &(CarManager::getInstance()->cars[i]->uvVbo));
+		glGenTextures(1, &(CarManager::getInstance()->cars[i]->texture));
 	}
 }
 
@@ -120,40 +120,126 @@ void Shader::initShader()
 	glUseProgram(shaderProgram);
 }
 
+void Shader::initTexture()
+{
+	// BackGround
+	{
+		for (size_t i = 0; i < 4; ++i) {
+			int imageWidth, imageHeight, numberOfChannel;
+			glBindTexture(GL_TEXTURE_2D, BackGround::getInstance()->textures[i]);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			stbi_set_flip_vertically_on_load(true);
+			unsigned char* data;
+			switch (i)
+			{
+			case 0:
+				data = stbi_load("Resources/BackGround/title.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
+				break;
+			case 1:
+				data = stbi_load("Resources/BackGround/select.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
+				break;
+			case 2:
+				data = stbi_load("Resources/BackGround/select.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
+				break;
+			case 3:
+				data = stbi_load("Resources/BackGround/end.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
+				break;
+			default:
+				break;
+			}
+			glTexImage2D(GL_TEXTURE_2D, 0, 3, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			stbi_image_free(data);
+		}
+	}
+
+	// Car
+	{
+		for (size_t i = 0; i < 2; ++i) {
+			int imageWidth, imageHeight, numberOfChannel;
+			glBindTexture(GL_TEXTURE_2D, CarManager::getInstance()->cars[i]->texture);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			stbi_set_flip_vertically_on_load(true);
+			unsigned char* data = stbi_load("Resources/BackGround/end.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
+			glTexImage2D(GL_TEXTURE_2D, 0, 3, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			stbi_image_free(data);
+		}
+	}
+}
+
 void Shader::initBuffer()
 {
+	// BackGround
+	{
+		glBindVertexArray(BackGround::getInstance()->vao);
+		glBindBuffer(GL_ARRAY_BUFFER, BackGround::getInstance()->vertexVbo);
+		glBufferData(GL_ARRAY_BUFFER, BackGround::getInstance()->verticies.size() * sizeof(glm::vec3), BackGround::getInstance()->verticies.data(), GL_STATIC_DRAW);
+		GLint pAttribute = glGetAttribLocation(shaderProgram, "vPos");
+		glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+		glEnableVertexAttribArray(pAttribute);
+
+		glBindBuffer(GL_ARRAY_BUFFER, BackGround::getInstance()->normalVbo);
+		glBufferData(GL_ARRAY_BUFFER, BackGround::getInstance()->normals.size() * sizeof(glm::vec3), BackGround::getInstance()->normals.data(), GL_STATIC_DRAW);
+		GLint nAttribute = glGetAttribLocation(shaderProgram, "vNormal");
+		glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+		glEnableVertexAttribArray(nAttribute);
+
+		glBindBuffer(GL_ARRAY_BUFFER, BackGround::getInstance()->colorVbo);
+		glBufferData(GL_ARRAY_BUFFER, BackGround::getInstance()->colors.size() * sizeof(glm::vec3), BackGround::getInstance()->colors.data(), GL_STATIC_DRAW);
+		GLint cAttribute = glGetAttribLocation(shaderProgram, "vColor");
+		glVertexAttribPointer(cAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+		glEnableVertexAttribArray(cAttribute);
+
+
+		glBindBuffer(GL_ARRAY_BUFFER, BackGround::getInstance()->uvVbo);
+		glBufferData(GL_ARRAY_BUFFER, BackGround::getInstance()->uvs.size() * sizeof(glm::vec2), BackGround::getInstance()->uvs.data(), GL_STATIC_DRAW);
+		GLint tAttribute = glGetAttribLocation(shaderProgram, "vTexCoord");
+		glVertexAttribPointer(tAttribute, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
+		glEnableVertexAttribArray(tAttribute);
+	}
+
 	// Car
 	{
 		for (size_t i = 0; i < 2; ++i) {
 			glBindVertexArray(CarManager::getInstance()->cars[i]->vao);
 			glBindBuffer(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->vertexVbo);
 			glBufferData(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->verticies.size() * sizeof(glm::vec3), CarManager::getInstance()->cars[i]->verticies.data(), GL_STATIC_DRAW);
-			GLuint pAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vPos");
+			GLint pAttribute = glGetAttribLocation(shaderProgram, "vPos");
 			glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 			glEnableVertexAttribArray(pAttribute);
 
 			glBindBuffer(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->normalVbo);
 			glBufferData(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->normals.size() * sizeof(glm::vec3), CarManager::getInstance()->cars[i]->normals.data(), GL_STATIC_DRAW);
-			GLint nAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vNormal");
+			GLint nAttribute = glGetAttribLocation(shaderProgram, "vNormal");
 			glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 			glEnableVertexAttribArray(nAttribute);
 
 			glBindBuffer(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->colorVbo);
 			glBufferData(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->colors.size() * sizeof(glm::vec3), CarManager::getInstance()->cars[i]->colors.data(), GL_STATIC_DRAW);
-			GLint cAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vColor");
+			GLint cAttribute = glGetAttribLocation(shaderProgram, "vColor");
 			glVertexAttribPointer(cAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 			glEnableVertexAttribArray(cAttribute);
+
+			glBindBuffer(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->uvVbo);
+			glBufferData(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->uvs.size() * sizeof(glm::vec2), CarManager::getInstance()->cars[i]->uvs.data(), GL_STATIC_DRAW);
+			GLint tAttribute = glGetAttribLocation(shaderProgram, "vTexCoord");
+			glVertexAttribPointer(tAttribute, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
+			glEnableVertexAttribArray(tAttribute);
 		}
-		GLuint lightPosLocation = glGetUniformLocation(Shader::getInstance()->getShaderProgram(), "lightPos"); // lightPos 전달 
-		glUniform3f(lightPosLocation, Light::getInstance()->getPosition().x, Light::getInstance()->getPosition().y, Light::getInstance()->getPosition().z);
-		GLuint lightColorLocation = glGetUniformLocation(Shader::getInstance()->getShaderProgram(), "lightColor"); // lightColor 전달 
-		glUniform3f(lightColorLocation, Light::getInstance()->getLightColor().x, Light::getInstance()->getLightColor().y, Light::getInstance()->getLightColor().z);
-		GLuint viewPosLocation = glGetUniformLocation(Shader::getInstance()->getShaderProgram(), "viewPos"); // viewPos 값 전달: 카메라 위치 
-		glUniform3f(viewPosLocation, Camera::getInstance()->getPositionVector().x, Camera::getInstance()->getPositionVector().y, Camera::getInstance()->getPositionVector().z);
 	}
 
 	// Light
-
+	GLuint lightPosLocation = glGetUniformLocation(Shader::getInstance()->getShaderProgram(), "lightPos"); // lightPos 전달 
+	glUniform3f(lightPosLocation, Light::getInstance()->getPosition().x, Light::getInstance()->getPosition().y, Light::getInstance()->getPosition().z);
+	GLuint lightColorLocation = glGetUniformLocation(Shader::getInstance()->getShaderProgram(), "lightColor"); // lightColor 전달 
+	glUniform3f(lightColorLocation, Light::getInstance()->getLightColor().x, Light::getInstance()->getLightColor().y, Light::getInstance()->getLightColor().z);
+	GLuint viewPosLocation = glGetUniformLocation(Shader::getInstance()->getShaderProgram(), "viewPos"); // viewPos 값 전달: 카메라 위치 
+	glUniform3f(viewPosLocation, Camera::getInstance()->getPositionVector().x, Camera::getInstance()->getPositionVector().y, Camera::getInstance()->getPositionVector().z);
 }
 
 void Shader::release()

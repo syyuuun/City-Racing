@@ -175,6 +175,7 @@ void BackGround::render()
 	default:
 		break;
 	}
+
 	glDrawArrays(GL_TRIANGLES, 0, verticies.size());
 }
 
