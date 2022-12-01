@@ -25,9 +25,6 @@
     <Filter Include="소스 파일\03.Light">
       <UniqueIdentifier>{0a03473c-1d99-41d9-95e9-c287da8dd3d5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\04.Shader">
-      <UniqueIdentifier>{da1f851d-bbe5-4cef-b154-e339c29215f8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\06.Default">
       <UniqueIdentifier>{230a772b-95db-409e-a429-714b7ae97d1c}</UniqueIdentifier>
     </Filter>
@@ -69,6 +66,15 @@
     </Filter>
     <Filter Include="소스 파일\05.Manager\00.SceneManager\00.Scene\01.SelectScene">
       <UniqueIdentifier>{12610a01-d6eb-42bb-9180-514dbfd63ae0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\03.BackGround">
+      <UniqueIdentifier>{e313204a-940b-4834-95d2-9a22c9cbfdcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\04.Shader">
+      <UniqueIdentifier>{da1f851d-bbe5-4cef-b154-e339c29215f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\04.Stage">
+      <UniqueIdentifier>{8a07236f-dad9-4149-95bd-b8106b15fce0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +122,9 @@
     </ClCompile>
     <ClCompile Include="Porsche.cpp">
       <Filter>소스 파일\01.Object\00.Car\01.Porsche</Filter>
+    </ClCompile>
+    <ClCompile Include="BackGround.cpp">
+      <Filter>소스 파일\01.Object\03.BackGround</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -181,6 +190,12 @@
     </ClInclude>
     <ClInclude Include="CarManager.h">
       <Filter>소스 파일\05.Manager\01.CarManager</Filter>
+    </ClInclude>
+    <ClInclude Include="stb_image.h">
+      <Filter>헤더 파일\Include</Filter>
+    </ClInclude>
+    <ClInclude Include="BackGround.h">
+      <Filter>소스 파일\01.Object\03.BackGround</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
