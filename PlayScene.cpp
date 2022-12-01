@@ -3,7 +3,7 @@
 void PlayScene::initialize()
 {
 	std::cout << "Enter Play Scene" << "\n";	
-
+	CarManager::getInstance()->initialize();
 	// Road Load
 	 
 	// Obstacle Road
@@ -29,7 +29,6 @@ void PlayScene::inputKeyboard(unsigned char key, int x, int y)
 
 void PlayScene::inputSpecialKeyboard(int key, int x, int y)
 {
-	CarManager::getInstance()->inputSpecialKeyboard(key, x, y);
 }
 
 void PlayScene::inputMouse(int button, int state, int x, int y)
@@ -44,6 +43,7 @@ void PlayScene::update()
 	// Obstacle update
 
 	// Car update
+	CarManager::getInstance()->update();
 	Camera::getInstance()->update();
 
 	// Light update

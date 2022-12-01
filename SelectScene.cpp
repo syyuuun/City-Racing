@@ -3,6 +3,7 @@
 void SelectScene::initialize()
 {
 	std::cout << "Enter Select Scene" << "\n";
+	CarManager::getInstance()->initialize();
 }
 
 void SelectScene::inputKeyboard(unsigned char key, int x, int y)
@@ -44,7 +45,7 @@ void SelectScene::inputMouse(int button, int state, int x, int y)
 
 void SelectScene::update()
 {
-	CarManager::getInstance()->update();
+	// CarManager::getInstance()->update();
 	Camera::getInstance()->update();
 	Light::getInstance()->update();
 }

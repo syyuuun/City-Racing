@@ -19,6 +19,7 @@ CarManager::CarManager()
 
 void CarManager::initialize()
 {
+	currentCar->initialize();
 }
 
 void CarManager::select()
