@@ -21,4 +21,6 @@ public:
 	virtual void render() = 0;
 
 	virtual void release() = 0;
+
+
 };

@@ -10,6 +10,7 @@ void Bmw::initialize()
 {
 	scaleVector = glm::vec3{ 2.0f,1.0f,1.0f };
 	positionVector = glm::vec3{ 0.0f,0.0f,0.0f };
+	rotationDegree = 90.f;
 }
 
 void Bmw::readObj(const char* objName)
@@ -134,21 +135,6 @@ void Bmw::inputKeyboard(unsigned char key, int x, int y)
 
 void Bmw::inputSpecialKeyboard(int key, int x, int y)
 {
-	switch (key)
-	{
-	case GLUT_KEY_LEFT:
-		break;
-	case GLUT_KEY_RIGHT:
-		break;
-	case GLUT_KEY_UP:
-		positionVector.z -= 0.1f;
-		break;
-	case GLUT_KEY_DOWN:
-		positionVector.z += 0.1f;
-		break;
-	default:
-		break;
-	}
 }
 
 void Bmw::inputMouse(int button, int state, int x, int y)
@@ -158,6 +144,44 @@ void Bmw::inputMouse(int button, int state, int x, int y)
 
 void Bmw::update()
 {
+	if (GetAsyncKeyState(VK_UP) & 0x8000) {
+		if (speed <= 0.3f)
+			speed += 0.01f;
+	}
+	else if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
+		if (speed >= -0.2f)
+			speed -= 0.01f;
+	}
+	else {
+		if (speed < 0) {
+			speed += 0.001f;
+			if (speed >= 0)
+				speed = 0;
+		}
+		else {
+			speed -= 0.001f;
+			if (speed <= 0)
+				speed = 0;
+		}
+	}
+	if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
+		if (rotationDegree >= 70.f) {
+			rotationDegree -= 1.f;
+		}
+		positionVector.x += 0.1f;
+	}
+	else if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
+		if (rotationDegree <= 110.f) {
+			rotationDegree += 1.f;
+		}
+		positionVector.x -= 0.1f;
+	}
+	else {
+		rotationDegree = 90.f;
+	}
+	positionVector.z -= speed;
+	// Camera::getInstance()->getPositionVector().z -= speed; 맵이 없어서 카메라가 같이 움직이면 객체가 안 움직이는 것처럼 보임
+	// Camera::getInstance()->getLookVector().z -= speed;
 	GLuint pAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vPos");
 	glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 	glEnableVertexAttribArray(pAttribute);
@@ -167,8 +191,7 @@ void Bmw::update()
 	GLint cAttribute = glGetAttribLocation(Shader::getInstance()->getShaderProgram(), "vColor");
 	glVertexAttribPointer(cAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 	glEnableVertexAttribArray(cAttribute);
-
-	rotationDegree += 1.0f;
+	// rotationDegree += 1.0f;
 }
 
 void Bmw::render()
