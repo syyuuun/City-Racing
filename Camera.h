@@ -31,4 +31,6 @@ public:
 	glm::vec3& getDefaultUpVector();
 
 	void update();
+
+	void release();
 };
