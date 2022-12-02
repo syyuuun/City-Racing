@@ -2,8 +2,8 @@
 
 Bmw::Bmw()
 {
-	readObj("Car/BMW_M3_GTR.obj");
 	//readObj("Car/BMW_M3_GTR.obj");
+	readObj("Resources/Car/BMW_M3_GTR.obj");
 }
 
 void Bmw::initialize()
@@ -144,45 +144,54 @@ void Bmw::inputMouse(int button, int state, int x, int y)
 
 void Bmw::update()
 {
-	if (GetAsyncKeyState(VK_UP) & 0x8000) {
-		if (speed <= 0.3f)
-			speed += 0.01f;
-	}
-	else if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
-		if (speed >= -0.2f)
-			speed -= 0.01f;
-	}
-	else {
-		if (speed < 0) {
-			speed += 0.001f;
-			if (speed >= 0)
-				speed = 0;
+	switch (SceneManager::getInstance()->getCurrentSceneType())
+	{
+	case SceneManager::SceneType::SELECT:
+		rotationDegree += 1.0f;
+		break;
+	case SceneManager::SceneType::PLAY:
+		if (GetAsyncKeyState(VK_UP) & 0x8000) {
+			if (speed <= 0.3f)
+				speed += 0.01f;
+		}
+		else if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
+			if (speed >= -0.2f)
+				speed -= 0.01f;
 		}
 		else {
-			speed -= 0.001f;
-			if (speed <= 0)
-				speed = 0;
+			if (speed < 0) {
+				speed += 0.001f;
+				if (speed >= 0)
+					speed = 0;
+			}
+			else {
+				speed -= 0.001f;
+				if (speed <= 0)
+					speed = 0;
+			}
 		}
-	}
-	if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
-		if (rotationDegree >= 70.f) {
-			rotationDegree -= 1.f;
+		if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
+			if (rotationDegree >= 70.f) {
+				rotationDegree -= 1.f;
+			}
+			positionVector.x += 0.1f;
 		}
-		positionVector.x += 0.1f;
-	}
-	else if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-		if (rotationDegree <= 110.f) {
-			rotationDegree += 1.f;
+		else if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
+			if (rotationDegree <= 110.f) {
+				rotationDegree += 1.f;
+			}
+			positionVector.x -= 0.1f;
 		}
-		positionVector.x -= 0.1f;
+		else {
+			rotationDegree = 90.f;
+		}
+		positionVector.z -= speed;
+		Camera::getInstance()->getPositionVector().z -= speed;
+		Camera::getInstance()->getLookVector().z -= speed;
+		break;
+	default:
+		break;
 	}
-	else {
-		rotationDegree = 90.f;
-	}
-	positionVector.z -= speed;
-	Camera::getInstance()->getPositionVector().z -= speed;
-	Camera::getInstance()->getLookVector().z -= speed;
-	rotationDegree += 1.0f;
 }
 
 void Bmw::render()

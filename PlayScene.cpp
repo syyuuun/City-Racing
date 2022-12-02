@@ -4,6 +4,7 @@ void PlayScene::initialize()
 {
 	std::cout << "Enter Play Scene" << "\n";	
 	CarManager::getInstance()->initialize();
+	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::PLAY);
 	BackGround::getInstance()->setBGType(BackGround::BGType::PLAY);
 	// Road Load
 	 

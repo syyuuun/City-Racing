@@ -2,6 +2,7 @@
 #include "Shader.h"
 #include "Object.h"
 #include "CarManager.h"
+#include "SceneManager.h"
 
 class Car : public Object {
 protected:
@@ -10,6 +11,7 @@ protected:
 	glm::vec3 scaleVector;
 	GLfloat rotationDegree{ 0.0f };
 	float speed{ 0.0f };
+
 public:
 	virtual void inputKeyboard(unsigned char, int, int) = 0;
 

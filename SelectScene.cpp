@@ -4,6 +4,7 @@ void SelectScene::initialize()
 {
 	std::cout << "Enter Select Scene" << "\n";
 	CarManager::getInstance()->initialize();
+	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::SELECT);
 	BackGround::getInstance()->setBGType(BackGround::BGType::SELECT);
 }
 
@@ -16,6 +17,18 @@ void SelectScene::inputKeyboard(unsigned char key, int x, int y)
 		break;
 	case VK_RETURN:
 		SceneManager::getInstance()->changeScene(SceneManager::SceneType::PLAY);
+		break;
+	case 'w':
+		Camera::getInstance()->getPositionVector().z -= 0.1f;
+		break;
+	case 'a':
+		Camera::getInstance()->getPositionVector().x -= 0.1f;
+		break;
+	case 's':
+		Camera::getInstance()->getPositionVector().z += 0.1f;
+		break;
+	case 'd':
+		Camera::getInstance()->getPositionVector().x += 0.1f;
 		break;
 	default:
 		break;

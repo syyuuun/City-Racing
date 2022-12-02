@@ -3,6 +3,7 @@
 void EndScene::initialize()
 {
 	std::cout << "Enter Ending Scene" << "\n";
+	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::PLAY);
 	BackGround::getInstance()->setBGType(BackGround::BGType::END);
 }
 

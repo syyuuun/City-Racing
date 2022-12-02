@@ -17,7 +17,7 @@ void main()
 {
 	// ambient
 	float ambientLight = 0.3; // 주변 조명 계수
-	vec3 ambient = ambientLight * vec3(1.0f,1.0f,1.0f); // 주변 조명 값
+	vec3 ambient = ambientLight * lightColor; // 주변 조명 값
 
 	// Diffuse
 	vec3 normalVector = normalize(Normal); // 노말 정규화

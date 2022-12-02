@@ -50,6 +50,10 @@ void SceneManager::changeScene(SceneType sceneType)
 	currentScene->initialize();
 }
 
+SceneManager::SceneType SceneManager::getCurrentSceneType() { return sceneType; }
+
+void SceneManager::setCurrentSceneType(SceneType type) { sceneType = type; }
+
 SceneManager* SceneManager::getInstance()
 {
 	if (nullptr == pInst)
