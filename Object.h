@@ -20,7 +20,7 @@ protected:
 	GLuint transformLocation;
 
 	glm::vec3 positionVector{ 0.0f,0.0f,0.0f };
-	glm::vec3 scaleVector{ 0.0f,0.0f,0.0f };
+	glm::vec3 scaleVector{ 1.0f,1.0f,1.0f };
 	
 	bool isObjInit{ false };
 public:
