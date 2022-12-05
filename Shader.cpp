@@ -85,6 +85,7 @@ void Shader::checkCompileError(const GLuint& shaderType, const char* name)
 
 void Shader::glGenerate()
 {
+	// BackGround
 	glGenVertexArrays(1, &(BackGround::getInstance()->vao));
 	glGenBuffers(1, &(BackGround::getInstance()->vertexVbo));
 	glGenBuffers(1, &(BackGround::getInstance()->normalVbo));
@@ -92,13 +93,24 @@ void Shader::glGenerate()
 	glGenBuffers(1, &(BackGround::getInstance()->uvVbo));
 	glGenTextures(4, (BackGround::getInstance()->textures));
 
-	for (size_t i = 0; i < 2; ++i) {
+	// Cars
+	for (size_t i = 0; i < CarManager::getInstance()->nCar; ++i) {
 		glGenVertexArrays(1, &(CarManager::getInstance()->cars[i]->vao));
 		glGenBuffers(1, &(CarManager::getInstance()->cars[i]->vertexVbo));
 		glGenBuffers(1, &(CarManager::getInstance()->cars[i]->normalVbo));
 		glGenBuffers(1, &(CarManager::getInstance()->cars[i]->colorVbo));
 		glGenBuffers(1, &(CarManager::getInstance()->cars[i]->uvVbo));
 		glGenTextures(1, &(CarManager::getInstance()->cars[i]->texture));
+	}
+	
+	// Map
+	for (size_t i = 0; i < StageManager::getInstance()->nRoads; ++i) {
+		glGenVertexArrays(1, &(StageManager::getInstance()->roads[i]->vao));
+		glGenBuffers(1, &(StageManager::getInstance()->roads[i]->vertexVbo));
+		glGenBuffers(1, &(StageManager::getInstance()->roads[i]->normalVbo));
+		glGenBuffers(1, &(StageManager::getInstance()->roads[i]->colorVbo));
+		glGenBuffers(1, &(StageManager::getInstance()->roads[i]->uvVbo));
+		glGenTextures(1, &(StageManager::getInstance()->roads[i]->texture));
 	}
 }
 
@@ -157,7 +169,7 @@ void Shader::initTexture()
 
 	// Car
 	{
-		for (size_t i = 0; i < 2; ++i) {
+		for (size_t i = 0; i < CarManager::getInstance()->nCar; ++i) {
 			int imageWidth, imageHeight, numberOfChannel;
 			glBindTexture(GL_TEXTURE_2D, CarManager::getInstance()->cars[i]->texture);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -166,6 +178,22 @@ void Shader::initTexture()
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 			stbi_set_flip_vertically_on_load(true);
 			unsigned char* data = stbi_load("Resources/BackGround/end.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
+			glTexImage2D(GL_TEXTURE_2D, 0, 3, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			stbi_image_free(data);
+		}
+	}
+
+	// Road
+	{
+		for (size_t i = 0; i < StageManager::getInstance()->nRoads; ++i) {
+			int imageWidth, imageHeight, numberOfChannel;
+			glBindTexture(GL_TEXTURE_2D, StageManager::getInstance()->roads[i]->texture);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			stbi_set_flip_vertically_on_load(true);
+			unsigned char* data = stbi_load("Resources/Map/road.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
 			glTexImage2D(GL_TEXTURE_2D, 0, 3, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 			stbi_image_free(data);
 		}
@@ -205,7 +233,7 @@ void Shader::initBuffer()
 
 	// Car
 	{
-		for (size_t i = 0; i < 2; ++i) {
+		for (size_t i = 0; i < CarManager::getInstance()->nCar; ++i) {
 			glBindVertexArray(CarManager::getInstance()->cars[i]->vao);
 			glBindBuffer(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->vertexVbo);
 			glBufferData(GL_ARRAY_BUFFER, CarManager::getInstance()->cars[i]->verticies.size() * sizeof(glm::vec3), CarManager::getInstance()->cars[i]->verticies.data(), GL_STATIC_DRAW);
@@ -231,6 +259,34 @@ void Shader::initBuffer()
 			glVertexAttribPointer(tAttribute, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
 			glEnableVertexAttribArray(tAttribute);
 		}
+	}
+
+	// Map
+	for (size_t i = 0; i < StageManager::getInstance()->nRoads; ++i) {
+		glBindVertexArray(StageManager::getInstance()->roads[i]->vao);
+		glBindBuffer(GL_ARRAY_BUFFER, StageManager::getInstance()->roads[i]->vertexVbo);
+		glBufferData(GL_ARRAY_BUFFER, StageManager::getInstance()->roads[i]->verticies.size() * sizeof(glm::vec3), StageManager::getInstance()->roads[i]->verticies.data(), GL_STATIC_DRAW);
+		GLint pAttribute = glGetAttribLocation(shaderProgram, "vPos");
+		glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+		glEnableVertexAttribArray(pAttribute);
+
+		glBindBuffer(GL_ARRAY_BUFFER, StageManager::getInstance()->roads[i]->normalVbo);
+		glBufferData(GL_ARRAY_BUFFER, StageManager::getInstance()->roads[i]->normals.size() * sizeof(glm::vec3), StageManager::getInstance()->roads[i]->normals.data(), GL_STATIC_DRAW);
+		GLint nAttribute = glGetAttribLocation(shaderProgram, "vNormal");
+		glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+		glEnableVertexAttribArray(nAttribute);
+
+		glBindBuffer(GL_ARRAY_BUFFER, StageManager::getInstance()->roads[i]->colorVbo);
+		glBufferData(GL_ARRAY_BUFFER, StageManager::getInstance()->roads[i]->colors.size() * sizeof(glm::vec3), StageManager::getInstance()->roads[i]->colors.data(), GL_STATIC_DRAW);
+		GLint cAttribute = glGetAttribLocation(shaderProgram, "vColor");
+		glVertexAttribPointer(cAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+		glEnableVertexAttribArray(cAttribute);
+
+		glBindBuffer(GL_ARRAY_BUFFER, StageManager::getInstance()->roads[i]->uvVbo);
+		glBufferData(GL_ARRAY_BUFFER, StageManager::getInstance()->roads[i]->uvs.size() * sizeof(glm::vec2), StageManager::getInstance()->roads[i]->uvs.data(), GL_STATIC_DRAW);
+		GLint tAttribute = glGetAttribLocation(shaderProgram, "vTexCoord");
+		glVertexAttribPointer(tAttribute, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
+		glEnableVertexAttribArray(tAttribute);
 	}
 
 	// Light
