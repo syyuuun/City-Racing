@@ -2,8 +2,7 @@
 
 Bmw::Bmw()
 {
-	//readObj("Car/BMW_M3_GTR.obj");
-	readObj("Resources/Car/BMW_M3_GTR.obj");
+	readObj("Resources/Car/BMW/BMW_M3_GTR.obj");
 }
 
 void Bmw::initialize()
@@ -11,6 +10,8 @@ void Bmw::initialize()
 	scaleVector = glm::vec3{ 2.0f,1.0f,1.0f };
 	positionVector = glm::vec3{ 0.0f,0.0f,0.0f };
 	rotationDegree = 90.f;
+
+	// setSpeed;
 }
 
 void Bmw::readObj(const char* objName)

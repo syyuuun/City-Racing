@@ -139,8 +139,11 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CarManager.cpp" />
     <ClCompile Include="EndScene.cpp" />
+    <ClCompile Include="Ford.cpp" />
     <ClCompile Include="GameFrameWork.cpp" />
     <ClCompile Include="Light.cpp" />
+    <ClCompile Include="Road.cpp" />
+    <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="Porsche.cpp" />
     <ClCompile Include="SelectScene.cpp" />
     <ClCompile Include="BackGround.cpp" />
@@ -161,9 +164,13 @@
     <ClInclude Include="Define.h" />
     <ClInclude Include="EndScene.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="Ford.h" />
     <ClInclude Include="GameFrameWork.h" />
     <ClInclude Include="Include.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="Road.h" />
+    <ClInclude Include="Stage.h" />
+    <ClInclude Include="StageManager.h" />
     <ClInclude Include="Porsche.h" />
     <ClInclude Include="SelectScene.h" />
     <ClInclude Include="stb_image.h" />

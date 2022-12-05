@@ -1,5 +1,6 @@
 #pragma once
 #include "CarManager.h"
+#include "StageManager.h"
 #include "SceneManager.h"
 
 class PlayScene : public Scene {

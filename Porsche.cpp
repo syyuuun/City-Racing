@@ -2,14 +2,15 @@
 
 Porsche::Porsche()
 {
-	//readObj("Car/Porsche_911_GT2.obj");
-	readObj("Resources/Car/Porsche_911_GT2.obj");
+	readObj("Resources/Car/PORSCHE/Porsche_911_GT2.obj");
 }
 
 void Porsche::initialize()
 {
 	scaleVector = glm::vec3{ 1.0f,1.0f,2.0f };
 	positionVector = glm::vec3{ 0.0f,0.0f,0.0f };
+
+	// setSpeed;
 }
 
 void Porsche::readObj(const char* objName)

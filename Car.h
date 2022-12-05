@@ -10,8 +10,7 @@ protected:
 	glm::vec3 positionVector;
 	glm::vec3 scaleVector;
 	GLfloat rotationDegree{ 0.0f };
-	float speed{ 0.0f };
-
+	GLfloat speed{ 0.0f };
 public:
 	virtual void inputKeyboard(unsigned char, int, int) = 0;
 

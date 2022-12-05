@@ -6,15 +6,17 @@ CarManager::CarManager()
 {
 	cars.emplace_back(new Bmw);
 	cars.emplace_back(new Porsche);
+	cars.emplace_back(new Ford);
 	
 	// 수정 필요
-	nCar = 2;
+	nCar = 3;
 
 	for (size_t i = 0; i < nCar; ++i) {
 		cars[i]->initialize();
 	}
 
-	currentCar = cars[0];
+	choiceIndex = 0;
+	currentCar = cars[choiceIndex];
 }
 
 void CarManager::initialize()
@@ -44,6 +46,11 @@ void CarManager::inputMouse(int button, int state, int x, int y)
 
 void CarManager::update()
 {
+	//if (sharedRotationDegree < 360.0f) {
+	//	sharedRotationDegree += 1.0f;
+	//}
+	//else
+	//	sharedRotationDegree = 0.0f;
 	currentCar->update();
 }
 
@@ -52,9 +59,9 @@ void CarManager::render()
 	currentCar->render();
 }
 
-void CarManager::changeCar(CarType carType)
+void CarManager::changeCar(GLint index)
 {
-	currentCar = cars[GLuint(carType)];
+	currentCar = cars[index];
 	currentCar->initialize();
 }
 
@@ -66,4 +73,9 @@ CarManager* CarManager::getInstance()
 		pInst = new CarManager;
 
 	return pInst;
+}
+
+GLint& CarManager::getChoiceIndex()
+{ 
+	return choiceIndex; 
 }

@@ -3,18 +3,14 @@
 void PlayScene::initialize()
 {
 	std::cout << "Enter Play Scene" << "\n";	
-	CarManager::getInstance()->initialize();
-	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::PLAY);
-	BackGround::getInstance()->setBGType(BackGround::BGType::PLAY);
-	// Road Load
-	 
-	// Obstacle Road
 
-	// Car Load
+	StageManager::getInstance()->initialize();
+
+	CarManager::getInstance()->initialize();
 	
-	// Camera Load
-	 
-	// Light Load
+	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::PLAY);
+	
+	BackGround::getInstance()->setBGType(BackGround::BGType::PLAY);
 }
 
 void PlayScene::inputKeyboard(unsigned char key, int x, int y)
@@ -24,6 +20,9 @@ void PlayScene::inputKeyboard(unsigned char key, int x, int y)
 	case VK_ESCAPE:
 		SceneManager::getInstance()->changeScene(SceneManager::SceneType::END);
 		break;
+	case 'w':
+		Camera::getInstance()->getPositionVector().y += 0.1f;
+		break;
 	default:
 		break;
 	}
@@ -31,6 +30,7 @@ void PlayScene::inputKeyboard(unsigned char key, int x, int y)
 
 void PlayScene::inputSpecialKeyboard(int key, int x, int y)
 {
+
 }
 
 void PlayScene::inputMouse(int button, int state, int x, int y)
@@ -42,6 +42,7 @@ void PlayScene::update()
 {
 	// Road Update
 
+	
 	// Obstacle update
 
 	// Car update
@@ -57,7 +58,8 @@ void PlayScene::render()
 	// BackGround render
 	BackGround::getInstance()->render();
 
-	// Road render
+	// Map render
+	StageManager::getInstance()->render();
 
 	// Obstacle render
 
