@@ -4,6 +4,7 @@
 #include <iostream>
 #include <random>
 #include <vector>
+#include <list>
 #include <cmath>
 #include <cstdlib>
 #include <gl/glew.h>
@@ -12,4 +13,5 @@
 #include <gl/glm/glm.hpp>
 #include <gl/glm/ext.hpp>
 #include <gl/glm/gtc/matrix_transform.hpp>
+#include <fmod.h>
 

@@ -2,6 +2,8 @@
 #include "StageManager.h"
 
 class Obstacle : public Stage {
+private:
+	bool onCollision{ false };
 public:
 	Obstacle(const glm::vec3& pos, const glm::vec3& scale);
 
