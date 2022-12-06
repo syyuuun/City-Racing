@@ -5,7 +5,7 @@ StageManager* StageManager::pInst = nullptr;
 StageManager::StageManager()
 {
 	for (size_t i = 0; i < nRoads; ++i) {
-		roads.emplace_back(new Road(glm::vec3{ 0.0f,-0.5f,0.0f + -2.0f * i }, glm::vec3{ 1.5f,0.1f,3.5f }));
+		roads.emplace_back(new Road(glm::vec3{ 0.0f,-0.5f,0.0f + -20.0f * i }, glm::vec3{ 8.0f,0.1f,10.0f }));
 	}
 }
 

@@ -11,6 +11,8 @@ void PlayScene::initialize()
 	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::PLAY);
 	
 	BackGround::getInstance()->setBGType(BackGround::BGType::PLAY);
+	
+	Camera::getInstance()->getPositionVector().y = 4.5f;
 }
 
 void PlayScene::inputKeyboard(unsigned char key, int x, int y)
@@ -19,9 +21,6 @@ void PlayScene::inputKeyboard(unsigned char key, int x, int y)
 	{
 	case VK_ESCAPE:
 		SceneManager::getInstance()->changeScene(SceneManager::SceneType::END);
-		break;
-	case 'w':
-		Camera::getInstance()->getPositionVector().y += 0.1f;
 		break;
 	default:
 		break;
@@ -56,7 +55,7 @@ void PlayScene::update()
 void PlayScene::render()
 {
 	// BackGround render
-	BackGround::getInstance()->render();
+	// BackGround::getInstance()->render();
 
 	// Map render
 	StageManager::getInstance()->render();

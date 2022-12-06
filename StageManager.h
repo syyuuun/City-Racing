@@ -11,7 +11,7 @@ private:
 	static StageManager* pInst;
 	std::vector<Stage*> roads;
 	std::vector<Stage*> obstacles;
-	size_t nRoads{ 1 };
+	size_t nRoads{ 100 };
 	size_t nObstacles{ 20 };
 private:
 	StageManager();
