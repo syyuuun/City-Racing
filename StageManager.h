@@ -4,6 +4,7 @@
 #include "Shader.h"
 #include "Stage.h"
 #include "Road.h"
+#include "Obstacle.h"
 #include "SceneManager.h"
 
 class StageManager {
