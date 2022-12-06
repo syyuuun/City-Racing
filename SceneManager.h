@@ -1,5 +1,6 @@
 #pragma once
 #include "pch.h"
+#include "Sound.h"
 #include "CarManager.h"
 #include "Scene.h"
 #include "TitleScene.h"

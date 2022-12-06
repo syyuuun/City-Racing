@@ -9,9 +9,12 @@
 
 class StageManager {
 private:
+	std::mt19937 mersenne{ std::random_device{}() };
+	std::uniform_real_distribution<GLfloat> randomXPos{ -5.0f,5.0f };
 	static StageManager* pInst;
 	std::vector<Stage*> roads;
-	std::vector<Stage*> obstacles;
+	std::list<Stage*> obstacles;
+	std::list<Stage*>::iterator obsIter;
 	size_t nRoads{ 100 };
 	size_t nObstacles{ 20 };
 private:

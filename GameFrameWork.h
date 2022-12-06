@@ -3,6 +3,7 @@
 #include "Shader.h"
 #include "Light.h"
 #include "Camera.h"
+#include "Sound.h"
 #include "SceneManager.h"
 #include "CarManager.h"
 

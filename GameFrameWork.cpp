@@ -22,6 +22,7 @@ GLvoid GameFrameWork::initialize()
 	Shader::getInstance()->initShader();
 	Shader::getInstance()->initTexture();
 	Shader::getInstance()->initBuffer();
+	Sound::getInstance()->initialize();
 }
 
 GLvoid GameFrameWork::renderScene()

@@ -25,41 +25,14 @@
     <Filter Include="소스 파일\03.Light">
       <UniqueIdentifier>{0a03473c-1d99-41d9-95e9-c287da8dd3d5}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\06.Default">
-      <UniqueIdentifier>{230a772b-95db-409e-a429-714b7ae97d1c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\00.GameFrameWork">
       <UniqueIdentifier>{dca54df0-d523-4658-a53b-68eb7cde7187}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\01.Object\00.Car">
       <UniqueIdentifier>{38923306-c34f-482b-b919-eee38c3e40a1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\05.Manager">
-      <UniqueIdentifier>{e838ed26-8a97-4c80-9b05-650371718c6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\05.Manager\01.CarManager">
-      <UniqueIdentifier>{2f5f16b3-3645-4d13-bb2d-daa3eae0e656}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\05.Manager\00.SceneManager">
-      <UniqueIdentifier>{c1601d22-69b5-4750-8ffe-162b4dc9c5d1}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\01.Object\00.Car\00.Bmw">
       <UniqueIdentifier>{eb51931c-9428-456b-ab2e-da22aec71f38}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\05.Manager\00.SceneManager\00.Scene">
-      <UniqueIdentifier>{191b7a79-1e92-4ef1-b470-a2461694106a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\05.Manager\00.SceneManager\00.Scene\00.TitleScene">
-      <UniqueIdentifier>{7f629463-c16a-4cb3-8c61-e41a23bc505b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\05.Manager\00.SceneManager\00.Scene\02.PlayScene">
-      <UniqueIdentifier>{18d1e26c-4710-4be0-b59f-c5fabc742364}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\05.Manager\00.SceneManager\00.Scene\03.EndScene">
-      <UniqueIdentifier>{a2d9de79-dc98-4305-a953-e47db24dbe1b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\05.Manager\00.SceneManager\00.Scene\01.SelectScene">
-      <UniqueIdentifier>{12610a01-d6eb-42bb-9180-514dbfd63ae0}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\04.Shader">
       <UniqueIdentifier>{da1f851d-bbe5-4cef-b154-e339c29215f8}</UniqueIdentifier>
@@ -69,9 +42,6 @@
     </Filter>
     <Filter Include="소스 파일\01.Object\00.Car\01.Porsche">
       <UniqueIdentifier>{dd870ebd-0aba-4bb8-a19c-d471c11cb7b6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\05.Manager\02.StageManager">
-      <UniqueIdentifier>{77a9b43d-099c-45b7-ac9f-cc007e708e17}</UniqueIdentifier>
     </Filter>
     <Filter Include="소스 파일\01.Object\02.BackGround">
       <UniqueIdentifier>{e313204a-940b-4834-95d2-9a22c9cbfdcd}</UniqueIdentifier>
@@ -85,6 +55,39 @@
     <Filter Include="소스 파일\01.Object\03.Stage\01.Obstacle">
       <UniqueIdentifier>{02360390-af0c-4a8f-9d7a-f9ee6e22b933}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\06.Manager">
+      <UniqueIdentifier>{e838ed26-8a97-4c80-9b05-650371718c6e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06.Manager\01.CarManager">
+      <UniqueIdentifier>{2f5f16b3-3645-4d13-bb2d-daa3eae0e656}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06.Manager\00.SceneManager">
+      <UniqueIdentifier>{c1601d22-69b5-4750-8ffe-162b4dc9c5d1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06.Manager\00.SceneManager\00.Scene">
+      <UniqueIdentifier>{191b7a79-1e92-4ef1-b470-a2461694106a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06.Manager\00.SceneManager\00.Scene\00.TitleScene">
+      <UniqueIdentifier>{7f629463-c16a-4cb3-8c61-e41a23bc505b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06.Manager\00.SceneManager\00.Scene\02.PlayScene">
+      <UniqueIdentifier>{18d1e26c-4710-4be0-b59f-c5fabc742364}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06.Manager\00.SceneManager\00.Scene\03.EndScene">
+      <UniqueIdentifier>{a2d9de79-dc98-4305-a953-e47db24dbe1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06.Manager\00.SceneManager\00.Scene\01.SelectScene">
+      <UniqueIdentifier>{12610a01-d6eb-42bb-9180-514dbfd63ae0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06.Manager\02.StageManager">
+      <UniqueIdentifier>{77a9b43d-099c-45b7-ac9f-cc007e708e17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\05.Sound">
+      <UniqueIdentifier>{8f301c49-1ea0-4d71-baa1-90b1b360d2c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\07.Default">
+      <UniqueIdentifier>{230a772b-95db-409e-a429-714b7ae97d1c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameFrameWork.cpp">
@@ -97,7 +100,7 @@
       <Filter>소스 파일\03.Light</Filter>
     </ClCompile>
     <ClCompile Include="SceneManager.cpp">
-      <Filter>소스 파일\05.Manager\00.SceneManager</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
       <Filter>소스 파일\01.Object</Filter>
@@ -109,19 +112,19 @@
       <Filter>소스 파일\04.Shader</Filter>
     </ClCompile>
     <ClCompile Include="TitleScene.cpp">
-      <Filter>소스 파일\05.Manager\00.SceneManager\00.Scene\00.TitleScene</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\00.TitleScene</Filter>
     </ClCompile>
     <ClCompile Include="PlayScene.cpp">
-      <Filter>소스 파일\05.Manager\00.SceneManager\00.Scene\02.PlayScene</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\02.PlayScene</Filter>
     </ClCompile>
     <ClCompile Include="EndScene.cpp">
-      <Filter>소스 파일\05.Manager\00.SceneManager\00.Scene\03.EndScene</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\03.EndScene</Filter>
     </ClCompile>
     <ClCompile Include="SelectScene.cpp">
-      <Filter>소스 파일\05.Manager\00.SceneManager\00.Scene\01.SelectScene</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\01.SelectScene</Filter>
     </ClCompile>
     <ClCompile Include="CarManager.cpp">
-      <Filter>소스 파일\05.Manager\01.CarManager</Filter>
+      <Filter>소스 파일\06.Manager\01.CarManager</Filter>
     </ClCompile>
     <ClCompile Include="Bmw.cpp">
       <Filter>소스 파일\01.Object\00.Car\00.Bmw</Filter>
@@ -136,13 +139,16 @@
       <Filter>소스 파일\01.Object\00.Car\02.Ford</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
-      <Filter>소스 파일\06.Default</Filter>
+      <Filter>소스 파일\07.Default</Filter>
     </ClCompile>
     <ClCompile Include="StageManager.cpp">
-      <Filter>소스 파일\05.Manager\02.StageManager</Filter>
+      <Filter>소스 파일\06.Manager\02.StageManager</Filter>
     </ClCompile>
     <ClCompile Include="Road.cpp">
       <Filter>소스 파일\01.Object\03.Stage\00.Road</Filter>
+    </ClCompile>
+    <ClCompile Include="Sound.cpp">
+      <Filter>소스 파일\05.Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -171,7 +177,7 @@
       <Filter>소스 파일\03.Light</Filter>
     </ClInclude>
     <ClInclude Include="SceneManager.h">
-      <Filter>소스 파일\05.Manager\00.SceneManager</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager</Filter>
     </ClInclude>
     <ClInclude Include="Car.h">
       <Filter>소스 파일\01.Object\00.Car</Filter>
@@ -186,19 +192,19 @@
       <Filter>소스 파일\04.Shader</Filter>
     </ClInclude>
     <ClInclude Include="Scene.h">
-      <Filter>소스 파일\05.Manager\00.SceneManager\00.Scene</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene</Filter>
     </ClInclude>
     <ClInclude Include="TitleScene.h">
-      <Filter>소스 파일\05.Manager\00.SceneManager\00.Scene\00.TitleScene</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\00.TitleScene</Filter>
     </ClInclude>
     <ClInclude Include="EndScene.h">
-      <Filter>소스 파일\05.Manager\00.SceneManager\00.Scene\03.EndScene</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\03.EndScene</Filter>
     </ClInclude>
     <ClInclude Include="PlayScene.h">
-      <Filter>소스 파일\05.Manager\00.SceneManager\00.Scene\02.PlayScene</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\02.PlayScene</Filter>
     </ClInclude>
     <ClInclude Include="SelectScene.h">
-      <Filter>소스 파일\05.Manager\00.SceneManager\00.Scene\01.SelectScene</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\01.SelectScene</Filter>
     </ClInclude>
     <ClInclude Include="Bmw.h">
       <Filter>소스 파일\01.Object\00.Car\00.Bmw</Filter>
@@ -207,7 +213,7 @@
       <Filter>소스 파일\01.Object\00.Car\01.Porsche</Filter>
     </ClInclude>
     <ClInclude Include="CarManager.h">
-      <Filter>소스 파일\05.Manager\01.CarManager</Filter>
+      <Filter>소스 파일\06.Manager\01.CarManager</Filter>
     </ClInclude>
     <ClInclude Include="stb_image.h">
       <Filter>헤더 파일\Include</Filter>
@@ -219,13 +225,16 @@
       <Filter>소스 파일\01.Object\00.Car\02.Ford</Filter>
     </ClInclude>
     <ClInclude Include="StageManager.h">
-      <Filter>소스 파일\05.Manager\02.StageManager</Filter>
+      <Filter>소스 파일\06.Manager\02.StageManager</Filter>
     </ClInclude>
     <ClInclude Include="Road.h">
       <Filter>소스 파일\01.Object\03.Stage\00.Road</Filter>
     </ClInclude>
     <ClInclude Include="Stage.h">
       <Filter>소스 파일\01.Object\03.Stage</Filter>
+    </ClInclude>
+    <ClInclude Include="Sound.h">
+      <Filter>소스 파일\05.Sound</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

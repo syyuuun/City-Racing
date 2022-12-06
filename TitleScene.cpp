@@ -7,6 +7,7 @@ void TitleScene::initialize()
 	Light::getInstance()->getPosition() = glm::vec3{ 0.0f,5.0f,0.0f };
 	Camera::getInstance()->getPositionVector() = glm::vec3{ 0.0f,0.0f,10.0f };
 	BackGround::getInstance()->setBGType(BackGround::BGType::TITLE);
+	Sound::getInstance()->play(Sound::SoundType::BGM);
 }
 
 void TitleScene::inputKeyboard(unsigned char key, int x, int y)

@@ -70,6 +70,10 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <IncludePath>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\inc;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Program Files (x86)\FMOD SoundSystem\FMOD Studio API Windows\api\core\lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -81,7 +85,8 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalOptions>glew32.lib freeglut.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalOptions>glew32.lib freeglut.lib fmod_vc.lib %(AdditionalOptions)</AdditionalOptions>
+      <AdditionalDependencies>fmod_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -143,6 +148,7 @@
     <ClCompile Include="GameFrameWork.cpp" />
     <ClCompile Include="Light.cpp" />
     <ClCompile Include="Road.cpp" />
+    <ClCompile Include="Sound.cpp" />
     <ClCompile Include="StageManager.cpp" />
     <ClCompile Include="Porsche.cpp" />
     <ClCompile Include="SelectScene.cpp" />
@@ -169,6 +175,7 @@
     <ClInclude Include="Include.h" />
     <ClInclude Include="Light.h" />
     <ClInclude Include="Road.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="Stage.h" />
     <ClInclude Include="StageManager.h" />
     <ClInclude Include="Porsche.h" />
