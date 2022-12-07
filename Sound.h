@@ -1,6 +1,5 @@
 #pragma once
 #include "pch.h"
-#include <fmod.h>
 
 class Sound {
 public:

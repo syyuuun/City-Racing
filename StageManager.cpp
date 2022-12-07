@@ -22,10 +22,8 @@ void StageManager::update()
 	for (size_t i = 0; i < nRoads; ++i)
 		roads[i]->update();
 
-	for (StageManager::getInstance()->obsIter = StageManager::getInstance()->obstacles.begin();
-		StageManager::getInstance()->obsIter != StageManager::getInstance()->obstacles.end(); ++StageManager::getInstance()->obsIter++) {
-		(*StageManager::getInstance()->obsIter)->update();
-	}
+	for (auto& ele : obstacles)
+		ele->update();
 }
 
 void StageManager::render()
@@ -33,10 +31,8 @@ void StageManager::render()
 	for (size_t i = 0; i < nRoads; ++i)
 		roads[i]->render();
 
-	for (StageManager::getInstance()->obsIter = StageManager::getInstance()->obstacles.begin();
-		StageManager::getInstance()->obsIter != StageManager::getInstance()->obstacles.end(); ++StageManager::getInstance()->obsIter++) {
-		(*StageManager::getInstance()->obsIter)->render();
-	}
+	for (auto& ele : obstacles)
+		ele->render();
 }
 
 size_t StageManager::getNRoads()

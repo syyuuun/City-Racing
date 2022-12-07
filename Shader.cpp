@@ -114,23 +114,13 @@ void Shader::glGenerate()
 	}
 
 	// Obstacles
-	//for (size_t i = 0; i < StageManager::getInstance()->nObstacles; ++i) {
-	//	glGenVertexArrays(1, &(StageManager::getInstance()->obstacles[i]->vao));
-	//	glGenBuffers(1, &(StageManager::getInstance()->obstacles[i]->vertexVbo));
-	//	glGenBuffers(1, &(StageManager::getInstance()->obstacles[i]->normalVbo));
-	//	glGenBuffers(1, &(StageManager::getInstance()->obstacles[i]->colorVbo));
-	//	glGenBuffers(1, &(StageManager::getInstance()->obstacles[i]->uvVbo));
-	//	glGenTextures(1, &(StageManager::getInstance()->obstacles[i]->texture));
-	//}
-
-	for (StageManager::getInstance()->obsIter = StageManager::getInstance()->obstacles.begin(); 
-		StageManager::getInstance()->obsIter != StageManager::getInstance()->obstacles.end(); ++StageManager::getInstance()->obsIter++) {
-		glGenVertexArrays(1, &((*StageManager::getInstance()->obsIter)->vao));
-		glGenBuffers(1, &((*StageManager::getInstance()->obsIter)->vertexVbo));
-		glGenBuffers(1, &((*StageManager::getInstance()->obsIter)->normalVbo));
-		glGenBuffers(1, &((*StageManager::getInstance()->obsIter)->colorVbo));
-		glGenBuffers(1, &((*StageManager::getInstance()->obsIter)->uvVbo));
-		glGenTextures(1, &((*StageManager::getInstance()->obsIter)->texture));
+	for (auto& ele : StageManager::getInstance()->obstacles) {
+		glGenVertexArrays(1, &(ele)->vao);
+		glGenBuffers(1, &(ele)->vertexVbo);
+		glGenBuffers(1, &(ele)->normalVbo);
+		glGenBuffers(1, &(ele)->colorVbo);
+		glGenBuffers(1, &(ele)->uvVbo);
+		glGenTextures(1, &(ele)->texture);
 	}
 }
 
@@ -218,25 +208,14 @@ void Shader::initTexture()
 			stbi_image_free(data);
 		}
 	}
-	// Obstacles
-	{
-		//for (size_t i = 0; i < StageManager::getInstance()->nObstacles; ++i) {
-		//	int imageWidth, imageHeight, numberOfChannel;
-		//	glBindTexture(GL_TEXTURE_2D, StageManager::getInstance()->obstacles[i]->texture);
-		//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-		//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-		//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		//	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		//	stbi_set_flip_vertically_on_load(true);
-		//	unsigned char* data = stbi_load("Resources/Map/box.jpg", &imageWidth, &imageHeight, &numberOfChannel, 0);
-		//	glTexImage2D(GL_TEXTURE_2D, 0, 3, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-		//	stbi_image_free(data);
-		//}
 
-		for (StageManager::getInstance()->obsIter = StageManager::getInstance()->obstacles.begin();
-			StageManager::getInstance()->obsIter != StageManager::getInstance()->obstacles.end(); ++StageManager::getInstance()->obsIter++) {
+	// Obstacles
+
+	{
+
+		for (auto& ele : StageManager::getInstance()->obstacles) {
 			int imageWidth, imageHeight, numberOfChannel;
-			glBindTexture(GL_TEXTURE_2D, (*StageManager::getInstance()->obsIter)->texture);
+			glBindTexture(GL_TEXTURE_2D, ele->texture);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -245,7 +224,6 @@ void Shader::initTexture()
 			unsigned char* data = stbi_load("Resources/Map/box.jpg", &imageWidth, &imageHeight, &numberOfChannel, 0);
 			glTexImage2D(GL_TEXTURE_2D, 0, 3, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 			stbi_image_free(data);
-
 		}
 	}
 }
@@ -340,56 +318,28 @@ void Shader::initBuffer()
 	}
 
 	// Obstacles
-	//for (size_t i = 0; i < StageManager::getInstance()->nObstacles; ++i) {
-	//	glBindVertexArray(StageManager::getInstance()->obstacles[i]->vao);
-	//	glBindBuffer(GL_ARRAY_BUFFER, StageManager::getInstance()->obstacles[i]->vertexVbo);
-	//	glBufferData(GL_ARRAY_BUFFER, StageManager::getInstance()->obstacles[i]->verticies.size() * sizeof(glm::vec3), StageManager::getInstance()->obstacles[i]->verticies.data(), GL_STATIC_DRAW);
-	//	GLint pAttribute = glGetAttribLocation(shaderProgram, "vPos");
-	//	glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-	//	glEnableVertexAttribArray(pAttribute);
-
-	//	glBindBuffer(GL_ARRAY_BUFFER, StageManager::getInstance()->obstacles[i]->normalVbo);
-	//	glBufferData(GL_ARRAY_BUFFER, StageManager::getInstance()->obstacles[i]->normals.size() * sizeof(glm::vec3), StageManager::getInstance()->obstacles[i]->normals.data(), GL_STATIC_DRAW);
-	//	GLint nAttribute = glGetAttribLocation(shaderProgram, "vNormal");
-	//	glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-	//	glEnableVertexAttribArray(nAttribute);
-
-	//	glBindBuffer(GL_ARRAY_BUFFER, StageManager::getInstance()->obstacles[i]->colorVbo);
-	//	glBufferData(GL_ARRAY_BUFFER, StageManager::getInstance()->obstacles[i]->colors.size() * sizeof(glm::vec3), StageManager::getInstance()->obstacles[i]->colors.data(), GL_STATIC_DRAW);
-	//	GLint cAttribute = glGetAttribLocation(shaderProgram, "vColor");
-	//	glVertexAttribPointer(cAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
-	//	glEnableVertexAttribArray(cAttribute);
-
-	//	glBindBuffer(GL_ARRAY_BUFFER, StageManager::getInstance()->obstacles[i]->uvVbo);
-	//	glBufferData(GL_ARRAY_BUFFER, StageManager::getInstance()->obstacles[i]->uvs.size() * sizeof(glm::vec2), StageManager::getInstance()->obstacles[i]->uvs.data(), GL_STATIC_DRAW);
-	//	GLint tAttribute = glGetAttribLocation(shaderProgram, "vTexCoord");
-	//	glVertexAttribPointer(tAttribute, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
-	//	glEnableVertexAttribArray(tAttribute);
-	//}
-
-	for (StageManager::getInstance()->obsIter = StageManager::getInstance()->obstacles.begin();
-		StageManager::getInstance()->obsIter != StageManager::getInstance()->obstacles.end(); ++StageManager::getInstance()->obsIter++) {
-		glBindVertexArray((*StageManager::getInstance()->obsIter)->vao);
-		glBindBuffer(GL_ARRAY_BUFFER, (*StageManager::getInstance()->obsIter)->vertexVbo);
-		glBufferData(GL_ARRAY_BUFFER, (*StageManager::getInstance()->obsIter)->verticies.size() * sizeof(glm::vec3), (*StageManager::getInstance()->obsIter)->verticies.data(), GL_STATIC_DRAW);
+	for (auto& ele : StageManager::getInstance()->obstacles) {
+		glBindVertexArray(ele->vao);
+		glBindBuffer(GL_ARRAY_BUFFER, ele->vertexVbo);
+		glBufferData(GL_ARRAY_BUFFER, ele->verticies.size() * sizeof(glm::vec3), ele->verticies.data(), GL_STATIC_DRAW);
 		GLint pAttribute = glGetAttribLocation(shaderProgram, "vPos");
 		glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 		glEnableVertexAttribArray(pAttribute);
 
-		glBindBuffer(GL_ARRAY_BUFFER, (*StageManager::getInstance()->obsIter)->normalVbo);
-		glBufferData(GL_ARRAY_BUFFER, (*StageManager::getInstance()->obsIter)->normals.size() * sizeof(glm::vec3), (*StageManager::getInstance()->obsIter)->normals.data(), GL_STATIC_DRAW);
+		glBindBuffer(GL_ARRAY_BUFFER, ele->normalVbo);
+		glBufferData(GL_ARRAY_BUFFER, ele->normals.size() * sizeof(glm::vec3), ele->normals.data(), GL_STATIC_DRAW);
 		GLint nAttribute = glGetAttribLocation(shaderProgram, "vNormal");
 		glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 		glEnableVertexAttribArray(nAttribute);
 
-		glBindBuffer(GL_ARRAY_BUFFER, (*StageManager::getInstance()->obsIter)->colorVbo);
-		glBufferData(GL_ARRAY_BUFFER, (*StageManager::getInstance()->obsIter)->colors.size() * sizeof(glm::vec3), (*StageManager::getInstance()->obsIter)->colors.data(), GL_STATIC_DRAW);
+		glBindBuffer(GL_ARRAY_BUFFER, ele->colorVbo);
+		glBufferData(GL_ARRAY_BUFFER, ele->colors.size() * sizeof(glm::vec3), ele->colors.data(), GL_STATIC_DRAW);
 		GLint cAttribute = glGetAttribLocation(shaderProgram, "vColor");
 		glVertexAttribPointer(cAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
 		glEnableVertexAttribArray(cAttribute);
 
-		glBindBuffer(GL_ARRAY_BUFFER, (*StageManager::getInstance()->obsIter)->uvVbo);
-		glBufferData(GL_ARRAY_BUFFER, (*StageManager::getInstance()->obsIter)->uvs.size() * sizeof(glm::vec2), (*StageManager::getInstance()->obsIter)->uvs.data(), GL_STATIC_DRAW);
+		glBindBuffer(GL_ARRAY_BUFFER, ele->uvVbo);
+		glBufferData(GL_ARRAY_BUFFER, ele->uvs.size() * sizeof(glm::vec2), ele->uvs.data(), GL_STATIC_DRAW);
 		GLint tAttribute = glGetAttribLocation(shaderProgram, "vTexCoord");
 		glVertexAttribPointer(tAttribute, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
 		glEnableVertexAttribArray(tAttribute);

@@ -22,6 +22,12 @@ void PlayScene::inputKeyboard(unsigned char key, int x, int y)
 	case VK_ESCAPE:
 		SceneManager::getInstance()->changeScene(SceneManager::SceneType::END);
 		break;
+		// 1ÀÎÄª ½ÃÁ¡
+	case '1':
+		break;
+		// 3ÀÎÄª ½ÃÁ¡ 
+	case '3':
+		break;
 	default:
 		break;
 	}
@@ -39,13 +45,10 @@ void PlayScene::inputMouse(int button, int state, int x, int y)
 
 void PlayScene::update()
 {
-	// Road Update
-
-	
-	// Obstacle update
-
 	// Car update
 	CarManager::getInstance()->update();
+	
+	// Camera update
 	Camera::getInstance()->update();
 
 	// Light update
@@ -54,13 +57,8 @@ void PlayScene::update()
 
 void PlayScene::render()
 {
-	// BackGround render
-	// BackGround::getInstance()->render();
-
 	// Map render
 	StageManager::getInstance()->render();
-
-	// Obstacle render
 
 	// Car render
 	CarManager::getInstance()->render();

@@ -5,6 +5,8 @@ void EndScene::initialize()
 	std::cout << "Enter Ending Scene" << "\n";
 	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::PLAY);
 	BackGround::getInstance()->setBGType(BackGround::BGType::END);
+	Camera::getInstance()->getPositionVector() = glm::vec3{ 0.0f,0.0f,10.0f };
+	Camera::getInstance()->getLookVector() = glm::vec3{ 0.0f,0.0f,0.0f };
 }
 
 void EndScene::inputKeyboard(unsigned char key, int x, int y)
@@ -31,7 +33,8 @@ void EndScene::inputMouse(int button, int state, int x, int y)
 
 void EndScene::update()
 {
-
+	Camera::getInstance()->update();
+	Light::getInstance()->update();
 }
 
 void EndScene::render()

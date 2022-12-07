@@ -9,7 +9,7 @@
 
 class CarManager {
 public:
-	enum class CarType{BMW =0, PORSCHE, FORD};
+	enum class CarType { BMW = 0, PORSCHE, FORD };
 private:
 	static CarManager* pInst;
 	CarType curretCarType{ CarType::BMW };
@@ -21,8 +21,7 @@ private:
 private:
 	CarManager();
 public:
-	//static GLfloat sharedRotationDegree;
-	
+
 	void initialize();
 
 	void select();
@@ -46,5 +45,3 @@ public:
 	static CarManager* getInstance();
 	friend class Shader;
 };
-
-//GLfloat CarManager::sharedRotationDegree = 0.0f;

@@ -3,6 +3,7 @@
 #include "CarManager.h"
 
 class SelectScene : public Scene {
+public:
 	virtual void initialize() override;
 
 	virtual void inputKeyboard(unsigned char, int, int) override;
