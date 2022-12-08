@@ -13,10 +13,10 @@ private:
 	std::uniform_real_distribution<GLfloat> randomXPos{ -5.0f,5.0f };
 	static StageManager* pInst;
 	std::vector<Stage*> roads;
-	std::list<Stage*> obstacles;
+	std::vector<Stage*> obstacles;
 	std::list<Stage*>::iterator obsIter;
 	size_t nRoads{ 100 };
-	size_t nObstacles{ 20 };
+	size_t nObstacles{ 200 };
 private:
 	StageManager();
 public:
@@ -29,6 +29,9 @@ public:
 	size_t getNRoads();
 
 	size_t getNObstacles();
+
+	glm::vec3 getPosition(int);
+
 public:
 	static StageManager* getInstance();
 

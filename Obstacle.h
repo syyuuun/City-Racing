@@ -16,4 +16,5 @@ public:
 	virtual void render();
 
 	virtual void release();
+
 };

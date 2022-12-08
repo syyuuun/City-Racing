@@ -1,4 +1,4 @@
-#include "CarManager.h"
+ï»¿#include "CarManager.h"
 
 CarManager* CarManager::pInst = nullptr;
 
@@ -8,7 +8,7 @@ CarManager::CarManager()
 	cars.emplace_back(new Porsche);
 	cars.emplace_back(new Ford);
 	
-	// ¼öÁ¤ ÇÊ¿ä
+	// ìˆ˜ì • í•„ìš”
 	nCar = 3;
 
 	for (size_t i = 0; i < nCar; ++i) {
@@ -46,12 +46,22 @@ void CarManager::inputMouse(int button, int state, int x, int y)
 
 void CarManager::update()
 {
-	//if (sharedRotationDegree < 360.0f) {
-	//	sharedRotationDegree += 1.0f;
-	//}
-	//else
-	//	sharedRotationDegree = 0.0f;
 	currentCar->update();
+	int n = StageManager::getInstance()->getNObstacles();
+	glm::vec3 v = currentCar->getPositionVector();
+	for (int i = 0; i < n; ++i) {
+		glm::vec3 t = StageManager::getInstance()->getPosition(i);
+		if (
+			v.x + 1 > t.x - 1
+			&& v.x - 1 < t.x + 1
+			&& v.z + 1 > t.z - 1
+			&& v.z - 1 < t.z + 1) {
+			std::cout << "col" << std::endl;
+			currentCar->collide();
+			break;
+		}
+	}
+
 }
 
 void CarManager::render()
@@ -74,6 +84,8 @@ CarManager* CarManager::getInstance()
 
 	return pInst;
 }
+
+Car*& CarManager::getCurrentCar() { return currentCar; }
 
 GLint& CarManager::getChoiceIndex()
 { 

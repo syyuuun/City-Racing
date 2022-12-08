@@ -45,8 +45,37 @@ glm::vec3& Camera::getDefaultUpVector()
 	return defaultUpVector;
 }
 
+void Camera::setPerspective(Perspective p)
+{
+	perspective = p;
+}
+
 void Camera::update()
 {
+	if (SceneManager::SceneType::PLAY == SceneManager::getInstance()->getCurrentSceneType()) {
+		switch (perspective)
+		{
+		case Camera::Perspective::ONE:
+			positionVector.x = CarManager::getInstance()->getCurrentCar()->getPositionVector().x;
+			positionVector.y = CarManager::getInstance()->getCurrentCar()->getPositionVector().y + 0.7f;
+			positionVector.z = CarManager::getInstance()->getCurrentCar()->getPositionVector().z - 3.0f;
+			lookVector.x = positionVector.x;
+			lookVector.y = positionVector.y;
+			lookVector.z = positionVector.z - 0.5f;
+			break;
+		case Camera::Perspective::THIRD:
+			positionVector.x = 0.0f;
+			positionVector.y = 4.5f;
+			positionVector.z = CarManager::getInstance()->getCurrentCar()->getPositionVector().z + 10.0f;
+			lookVector.x = 0.0f;
+			lookVector.y = 0.0f;
+			lookVector.z = CarManager::getInstance()->getCurrentCar()->getPositionVector().z;
+			break;
+		default:
+			break;
+		}
+	}
+
 	viewMatrix = glm::lookAt(positionVector, lookVector, upVector);
 	projectionMatrix = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 50.0f);
 	unsigned int viewTrasnformLocation = glGetUniformLocation(Shader::getInstance()->getShaderProgram(), "viewTransform");

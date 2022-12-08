@@ -13,10 +13,18 @@ void PlayScene::initialize()
 	BackGround::getInstance()->setBGType(BackGround::BGType::PLAY);
 	
 	Camera::getInstance()->getPositionVector().y = 4.5f;
+
+	std::cout << "Camera X: " << Camera::getInstance()->getPositionVector().x << "\n";
+	std::cout << "Camera Y: " << Camera::getInstance()->getPositionVector().y << "\n";
+	std::cout << "Camera Z: " <<  Camera::getInstance()->getPositionVector().z << "\n";
+	std::cout << "Camera Look X: "<< Camera::getInstance()->getLookVector().x << "\n";
+	std::cout << "Camera Look Y: " << Camera::getInstance()->getLookVector().y << "\n";
+	std::cout << "Camera Look Z: " << Camera::getInstance()->getLookVector().x << "\n";
 }
 
 void PlayScene::inputKeyboard(unsigned char key, int x, int y)
 {
+	
 	switch (key)
 	{
 	case VK_ESCAPE:
@@ -24,9 +32,11 @@ void PlayScene::inputKeyboard(unsigned char key, int x, int y)
 		break;
 		// 1ÀÎÄª ½ÃÁ¡
 	case '1':
+		Camera::getInstance()->setPerspective(Camera::Perspective::ONE);
 		break;
 		// 3ÀÎÄª ½ÃÁ¡ 
 	case '3':
+		Camera::getInstance()->setPerspective(Camera::Perspective::THIRD);
 		break;
 	default:
 		break;

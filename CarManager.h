@@ -41,6 +41,9 @@ public:
 	size_t getNCar();
 
 	GLint& getChoiceIndex();
+
+	Car*& getCurrentCar();
+
 public:
 	static CarManager* getInstance();
 	friend class Shader;

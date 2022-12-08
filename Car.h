@@ -18,5 +18,8 @@ public:
 
 	virtual void inputMouse(int, int, int, int) = 0;
 
+	const glm::vec3& getPositionVector() const { return positionVector; }
+	void collide() { speed = 0.0f; }
+
 	friend class Shader;
 };
