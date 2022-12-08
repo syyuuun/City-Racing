@@ -1,4 +1,4 @@
-#include "Bmw.h"
+﻿#include "Bmw.h"
 
 Bmw::Bmw()
 {
@@ -9,9 +9,7 @@ void Bmw::initialize()
 {
 	scaleVector = glm::vec3{ 2.0f,1.0f,1.0f };
 	positionVector = glm::vec3{ 0.0f,0.0f,0.0f };
-	rotationDegree = 90.f;
-
-	// setSpeed;
+	rotationDegree = 90.0f;
 }
 
 void Bmw::readObj(const char* objName)
@@ -189,6 +187,7 @@ void Bmw::update()
 		positionVector.z -= speed;
 		Camera::getInstance()->getPositionVector().z -= speed;
 		Camera::getInstance()->getLookVector().z -= speed;
+		Light::getInstance()->getPosition().z -= speed;
 		break;
 	default:
 		break;
@@ -212,9 +211,11 @@ void Bmw::render()
 	glBindVertexArray(vao);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glDrawArrays(GL_TRIANGLES, 0, verticies.size());
+
 }
 
 void Bmw::release()
 {
 
 }
+

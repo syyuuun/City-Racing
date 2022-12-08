@@ -9,8 +9,7 @@ void Porsche::initialize()
 {
 	scaleVector = glm::vec3{ 1.0f,1.0f,2.0f };
 	positionVector = glm::vec3{ 0.0f,0.0f,0.0f };
-
-	// setSpeed;
+	rotationDegree = 0.0f;
 }
 
 void Porsche::readObj(const char* objName)
@@ -170,23 +169,24 @@ void Porsche::update()
 			}
 		}
 		if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
-			if (rotationDegree >= 70.f) {
+			if (rotationDegree >= -20.f) {
 				rotationDegree -= 1.f;
 			}
 			positionVector.x += 0.1f;
 		}
 		else if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-			if (rotationDegree <= 110.f) {
+			if (rotationDegree <= 20.f) {
 				rotationDegree += 1.f;
 			}
 			positionVector.x -= 0.1f;
 		}
 		else {
-			rotationDegree = 90.f;
+			rotationDegree = 0.f;
 		}
 		positionVector.z -= speed;
 		Camera::getInstance()->getPositionVector().z -= speed;
 		Camera::getInstance()->getLookVector().z -= speed;
+		Light::getInstance()->getPosition().z -= speed;
 		break;
 	default:
 		break;

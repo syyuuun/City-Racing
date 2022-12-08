@@ -4,6 +4,8 @@
 #include "Shader.h"
 
 class Camera {
+public:
+	enum class Perspective{ONE,THIRD};
 private:
 	static Camera* pInst;
 	glm::vec3 positionVector{ glm::vec3{0.0f,5.0f,10.0f} };
@@ -16,6 +18,8 @@ private:
 	
 	glm::mat4 viewMatrix{ 1.0f };
 	glm::mat4 projectionMatrix{ 1.0f };
+	
+	Perspective perspective{ Perspective::THIRD };
 
 	friend class Shader;
 private:
@@ -29,6 +33,8 @@ public:
 	glm::vec3& getUpVector();
 	glm::vec3& getRightVector();
 	glm::vec3& getDefaultUpVector();
+
+	void setPerspective(Perspective);
 
 	void update();
 

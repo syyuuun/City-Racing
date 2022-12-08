@@ -8,4 +8,5 @@
 class Stage : public Object {
 public:
 	friend class Shader;
+	const glm::vec3& getPositionVector() const { return positionVector; }
 };

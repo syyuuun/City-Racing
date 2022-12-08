@@ -203,9 +203,6 @@
     <ClInclude Include="PlayScene.h">
       <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\02.PlayScene</Filter>
     </ClInclude>
-    <ClInclude Include="SelectScene.h">
-      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\01.SelectScene</Filter>
-    </ClInclude>
     <ClInclude Include="Bmw.h">
       <Filter>소스 파일\01.Object\00.Car\00.Bmw</Filter>
     </ClInclude>
@@ -235,6 +232,9 @@
     </ClInclude>
     <ClInclude Include="Sound.h">
       <Filter>소스 파일\05.Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectScene.h">
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\01.SelectScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

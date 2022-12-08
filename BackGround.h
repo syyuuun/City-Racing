@@ -24,6 +24,7 @@ public:
 
 	virtual void release();
 
+
 	void setBGType(BGType);
 
 	friend class Shader;
