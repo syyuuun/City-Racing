@@ -43,18 +43,6 @@
     <Filter Include="소스 파일\01.Object\00.Car\01.Porsche">
       <UniqueIdentifier>{dd870ebd-0aba-4bb8-a19c-d471c11cb7b6}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\01.Object\02.BackGround">
-      <UniqueIdentifier>{e313204a-940b-4834-95d2-9a22c9cbfdcd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01.Object\03.Stage">
-      <UniqueIdentifier>{9a7b6d19-4685-4732-a6d5-fb20eb9cc475}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01.Object\03.Stage\00.Road">
-      <UniqueIdentifier>{6c5d2ae3-d29e-4d53-baa8-583201308952}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="소스 파일\01.Object\03.Stage\01.Obstacle">
-      <UniqueIdentifier>{02360390-af0c-4a8f-9d7a-f9ee6e22b933}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\06.Manager">
       <UniqueIdentifier>{e838ed26-8a97-4c80-9b05-650371718c6e}</UniqueIdentifier>
     </Filter>
@@ -88,6 +76,18 @@
     <Filter Include="소스 파일\07.Default">
       <UniqueIdentifier>{230a772b-95db-409e-a429-714b7ae97d1c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01.Object\01.BackGround">
+      <UniqueIdentifier>{e313204a-940b-4834-95d2-9a22c9cbfdcd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\02.Stage">
+      <UniqueIdentifier>{9a7b6d19-4685-4732-a6d5-fb20eb9cc475}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\02.Stage\00.Road">
+      <UniqueIdentifier>{6c5d2ae3-d29e-4d53-baa8-583201308952}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\01.Object\02.Stage\01.Obstacle">
+      <UniqueIdentifier>{02360390-af0c-4a8f-9d7a-f9ee6e22b933}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameFrameWork.cpp">
@@ -106,7 +106,7 @@
       <Filter>소스 파일\01.Object</Filter>
     </ClCompile>
     <ClCompile Include="Obstacle.cpp">
-      <Filter>소스 파일\01.Object\03.Stage\01.Obstacle</Filter>
+      <Filter>소스 파일\01.Object\02.Stage\01.Obstacle</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
       <Filter>소스 파일\04.Shader</Filter>
@@ -133,7 +133,7 @@
       <Filter>소스 파일\01.Object\00.Car\01.Porsche</Filter>
     </ClCompile>
     <ClCompile Include="BackGround.cpp">
-      <Filter>소스 파일\01.Object\02.BackGround</Filter>
+      <Filter>소스 파일\01.Object\01.BackGround</Filter>
     </ClCompile>
     <ClCompile Include="Ford.cpp">
       <Filter>소스 파일\01.Object\00.Car\02.Ford</Filter>
@@ -145,7 +145,7 @@
       <Filter>소스 파일\06.Manager\02.StageManager</Filter>
     </ClCompile>
     <ClCompile Include="Road.cpp">
-      <Filter>소스 파일\01.Object\03.Stage\00.Road</Filter>
+      <Filter>소스 파일\01.Object\02.Stage\00.Road</Filter>
     </ClCompile>
     <ClCompile Include="Sound.cpp">
       <Filter>소스 파일\05.Sound</Filter>
@@ -186,7 +186,7 @@
       <Filter>소스 파일\01.Object</Filter>
     </ClInclude>
     <ClInclude Include="Obstacle.h">
-      <Filter>소스 파일\01.Object\03.Stage\01.Obstacle</Filter>
+      <Filter>소스 파일\01.Object\02.Stage\01.Obstacle</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>소스 파일\04.Shader</Filter>
@@ -216,7 +216,7 @@
       <Filter>헤더 파일\Include</Filter>
     </ClInclude>
     <ClInclude Include="BackGround.h">
-      <Filter>소스 파일\01.Object\02.BackGround</Filter>
+      <Filter>소스 파일\01.Object\01.BackGround</Filter>
     </ClInclude>
     <ClInclude Include="Ford.h">
       <Filter>소스 파일\01.Object\00.Car\02.Ford</Filter>
@@ -225,10 +225,10 @@
       <Filter>소스 파일\06.Manager\02.StageManager</Filter>
     </ClInclude>
     <ClInclude Include="Road.h">
-      <Filter>소스 파일\01.Object\03.Stage\00.Road</Filter>
+      <Filter>소스 파일\01.Object\02.Stage\00.Road</Filter>
     </ClInclude>
     <ClInclude Include="Stage.h">
-      <Filter>소스 파일\01.Object\03.Stage</Filter>
+      <Filter>소스 파일\01.Object\02.Stage</Filter>
     </ClInclude>
     <ClInclude Include="Sound.h">
       <Filter>소스 파일\05.Sound</Filter>
