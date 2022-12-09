@@ -16,6 +16,7 @@ void Sound::initialize()
 	FMOD_System_CreateSound(soundSystem, "Resources/Sound/accel.mp3", FMOD_DEFAULT, 0, &effectSound[1]);
 	FMOD_System_CreateSound(soundSystem, "Resources/Sound/decel.mp3", FMOD_DEFAULT, 0, &effectSound[2]);
 	FMOD_System_CreateSound(soundSystem, "Resources/Sound/collision.mp3", FMOD_DEFAULT, 0, &effectSound[3]);
+	FMOD_System_CreateSound(soundSystem, "Resources/Sound/jump.wav", FMOD_DEFAULT, 0, &effectSound[4]);
 }
 
 void Sound::play(SoundType type)
@@ -35,6 +36,10 @@ void Sound::play(SoundType type)
 	case Sound::SoundType::COLLISION:
 		FMOD_System_PlaySound(soundSystem, effectSound[3], NULL, 0, &channel[3]);
 		FMOD_Channel_SetVolume(channel[3], 15);
+		break;
+	case Sound::SoundType::JUMP:
+		FMOD_System_PlaySound(soundSystem, effectSound[4], NULL, 0, &channel[4]);
+		FMOD_Channel_SetVolume(channel[4], 15);
 		break;
 	default:
 		break;
