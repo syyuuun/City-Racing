@@ -171,6 +171,7 @@ void Bmw::update()
 			}
 
 		}
+		
 		if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
 			if (rotationDegree >= 70.f) {
 				rotationDegree -= 1.f;
@@ -187,6 +188,27 @@ void Bmw::update()
 			rotationDegree = 90.f;
 		}
 		positionVector.z -= speed;
+
+		if (GetAsyncKeyState(VK_SPACE) & 0x8000) {
+			onJump = true;
+		}
+
+		if (onJump) {
+			if (jumpVelocity > 0.0f)
+				jumpForce = (0.5f * mass * powf(jumpVelocity, 2));
+			else
+				jumpForce = -(0.5f * mass * powf(jumpVelocity, 2));
+
+			positionVector.y += jumpForce;
+			jumpVelocity -= 0.1f;
+
+			if (positionVector.y < 0.5f) {
+				onJump = false;
+				jumpVelocity = 2.0f;
+			}
+		}
+
+
 		Camera::getInstance()->getPositionVector().z -= speed;
 		Camera::getInstance()->getLookVector().z -= speed;
 		Light::getInstance()->getPosition().z -= speed;

@@ -24,11 +24,13 @@ void PlayScene::initialize()
 
 void PlayScene::inputKeyboard(unsigned char key, int x, int y)
 {
-	
 	switch (key)
 	{
 	case VK_ESCAPE:
 		SceneManager::getInstance()->changeScene(SceneManager::SceneType::END);
+		break;
+	case VK_SPACE:
+		Sound::getInstance()->play(Sound::SoundType::JUMP);
 		break;
 		// 1юнд╙ ╫ца║
 	case '1':
