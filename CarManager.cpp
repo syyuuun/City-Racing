@@ -52,12 +52,15 @@ void CarManager::update()
 	for (int i = 0; i < n; ++i) {
 		glm::vec3 t = StageManager::getInstance()->getPosition(i);
 		if (
-			v.x + 1 > t.x - 1
+			StageManager::getInstance()->getColideObstacle(i) == false
+			&& v.x + 1 > t.x - 1
 			&& v.x - 1 < t.x + 1
-			&& v.z + 1 > t.z - 1
-			&& v.z - 1 < t.z + 1) {
+			&& v.z + 1 > t.z - 1.3
+			&& v.z - 1 < t.z + 1.3
+			&& v.y - t.y < 1.0) {
 			std::cout << "col" << std::endl;
 			currentCar->collide();
+			StageManager::getInstance()->setColideObstacle(i);
 			break;
 		}
 	}

@@ -243,3 +243,9 @@ void Bmw::release()
 
 }
 
+void Bmw::collide()
+{
+	Sound::getInstance()->play(Sound::SoundType::COLLISION);
+	speed = 0.0f;
+	rotationDegree = 90.0f;
+}

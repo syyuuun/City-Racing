@@ -1,4 +1,4 @@
-#include "Porsche.h"
+﻿#include "Porsche.h"
 
 Porsche::Porsche()
 {
@@ -231,8 +231,21 @@ void Porsche::render()
 	glBindVertexArray(vao);
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glDrawArrays(GL_TRIANGLES, 0, verticies.size());
+
+	GLUquadricObj* qobj = gluNewQuadric(); // 객체 생성하기
+	gluQuadricDrawStyle(qobj, GLU_LINE); // 도형 스타일
+	gluQuadricNormals(qobj, GLU_SMOOTH); // 생략 가능
+	gluQuadricOrientation(qobj, GLU_OUTSIDE); // 생략 가능
+	gluSphere(qobj, 1.0, 10, 10);
 }
 
 void Porsche::release()
 {
+}
+
+void Porsche::collide()
+{
+	Sound::getInstance()->play(Sound::SoundType::COLLISION);
+	speed = 0.0f;
+	rotationDegree = 0;
 }

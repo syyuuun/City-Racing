@@ -240,3 +240,10 @@ void Ford::release()
 {
 
 }
+
+void Ford::collide()
+{
+	Sound::getInstance()->play(Sound::SoundType::COLLISION);
+	speed = 0.0f;
+	rotationDegree = 0;
+}

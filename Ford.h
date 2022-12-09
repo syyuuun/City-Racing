@@ -21,5 +21,6 @@ public:
 
 	virtual void release() override;
 
+	void collide() override;
 	friend class Shader;
 };

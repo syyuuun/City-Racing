@@ -32,6 +32,10 @@ public:
 
 	glm::vec3 getPosition(int);
 
+	void setColideObstacle(int);
+
+	bool getColideObstacle(int);
+
 public:
 	static StageManager* getInstance();
 

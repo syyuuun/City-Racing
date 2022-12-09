@@ -30,11 +30,7 @@ public:
 
 	const GLfloat& getJumpForce() const { return jumpForce; }
 
-	void collide()
-	{ 
-		Sound::getInstance()->play(Sound::SoundType::COLLISION);
-		speed = 0.0f; 
-	}
+	virtual void collide() = 0;
 
 	friend class Shader;
 };

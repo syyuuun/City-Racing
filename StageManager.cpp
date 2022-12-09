@@ -22,8 +22,10 @@ void StageManager::update()
 	for (size_t i = 0; i < nRoads; ++i)
 		roads[i]->update();
 
-	for (size_t i = 0; i < nObstacles; ++i)
-		obstacles[i]->update();
+	for (size_t i = 0; i < nObstacles; ++i) {
+		if (obstacles[i]->getCollision() == false)
+			obstacles[i]->update();
+	}
 }
 
 void StageManager::render()
@@ -31,8 +33,10 @@ void StageManager::render()
 	for (size_t i = 0; i < nRoads; ++i)
 		roads[i]->render();
 
-	for (size_t i = 0; i < nObstacles; ++i)
-		obstacles[i]->render();
+	for (size_t i = 0; i < nObstacles; ++i) {
+		if (obstacles[i]->getCollision() == false)
+			obstacles[i]->render();
+	}
 }
 
 size_t StageManager::getNRoads()
@@ -57,4 +61,14 @@ StageManager* StageManager::getInstance()
 glm::vec3 StageManager::getPosition(int n)
 {
 	return obstacles[n]->getPositionVector();
+}
+
+void StageManager::setColideObstacle(int n)
+{
+	obstacles[n]->setCollision();
+}
+
+bool StageManager::getColideObstacle(int n)
+{
+	return obstacles[n]->getCollision();
 }
