@@ -4,7 +4,7 @@
 class Sound {
 public:
 	enum class SoundType{BGM, START_UP, ACCELRATION, COLLISION};
-	enum{SOUND_COUNT = 1,EFFECT_COUNT = 3,CHANNEL_COUNT = 4};
+	enum{ EFFECT_COUNT = 5,CHANNEL_COUNT = 5};
 private:
 	static Sound* pInst;
 	FMOD_SYSTEM* soundSystem;
