@@ -187,7 +187,23 @@ void Shader::initTexture()
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 			stbi_set_flip_vertically_on_load(true);
-			unsigned char* data = stbi_load("Resources/BackGround/end.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
+			unsigned char* data = nullptr;
+			switch (i)
+			{
+			case 0:
+			{
+				data = stbi_load("Resources/Car/FORD/0000.bmp", &imageWidth, &imageHeight, &numberOfChannel, 0);
+				break;
+			}
+			case 1:
+				data = stbi_load("Resources/Car/PORSCHE/0000.bmp", &imageWidth, &imageHeight, &numberOfChannel, 0);
+				break;
+			case 2:
+				data = stbi_load("Resources/Car/FORD/0000.bmp", &imageWidth, &imageHeight, &numberOfChannel, 0);
+				break;
+			default:
+				break;
+			}
 			glTexImage2D(GL_TEXTURE_2D, 0, 3, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 			stbi_image_free(data);
 		}
@@ -212,7 +228,6 @@ void Shader::initTexture()
 	// Obstacles
 
 	{
-
 		for (auto& ele : StageManager::getInstance()->obstacles) {
 			int imageWidth, imageHeight, numberOfChannel;
 			glBindTexture(GL_TEXTURE_2D, ele->texture);

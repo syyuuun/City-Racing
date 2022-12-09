@@ -45,10 +45,12 @@ void SelectScene::inputSpecialKeyboard(int key, int x, int y)
 		else
 			CarManager::getInstance()->getChoiceIndex() = CarManager::getInstance()->getNCar() - 1;
 		CarManager::getInstance()->changeCar(CarManager::getInstance()->getChoiceIndex());
+		Sound::getInstance()->play(Sound::SoundType::START_UP);
 		break;
 	case GLUT_KEY_RIGHT:
 		CarManager::getInstance()->getChoiceIndex() = std::abs((CarManager::getInstance()->getChoiceIndex() + 1)) % CarManager::getInstance()->getNCar();
 		CarManager::getInstance()->changeCar(CarManager::getInstance()->getChoiceIndex());
+		Sound::getInstance()->play(Sound::SoundType::START_UP);
 		break;
 	default:
 		break;

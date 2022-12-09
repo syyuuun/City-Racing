@@ -152,6 +152,7 @@ void Bmw::update()
 		if (GetAsyncKeyState(VK_UP) & 0x8000) {
 			if (speed <= 0.3f)
 				speed += 0.01f;
+			Sound::getInstance()->play(Sound::SoundType::ACCELRATION);
 		}
 		else if (GetAsyncKeyState(VK_DOWN) & 0x8000) {
 			if (speed >= -0.2f)
@@ -168,6 +169,7 @@ void Bmw::update()
 				if (speed <= 0)
 					speed = 0;
 			}
+
 		}
 		if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
 			if (rotationDegree >= 70.f) {
