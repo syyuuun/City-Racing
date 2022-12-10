@@ -4,7 +4,7 @@
 class Obstacle : public Stage {
 private:
 	bool onCollision{ false };
-	int direction{ 1 };
+	int direction{ 1};
 	float speed{ 0 };
 public:
 	Obstacle(const glm::vec3& pos, const glm::vec3& scale);

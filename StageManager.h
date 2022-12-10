@@ -2,17 +2,18 @@
 
 #include "pch.h"
 #include "Shader.h"
+#include "Manager.h"
 #include "Stage.h"
 #include "Road.h"
 #include "Obstacle.h"
 #include "SceneManager.h"
 
-class StageManager {
+class StageManager : public Manager{
 private:
 	std::mt19937 mersenne{ std::random_device{}() };
 	std::uniform_real_distribution<GLfloat> randomXPos{ -5.0f,5.0f };
 	static StageManager* pInst;
-	std::vector<Stage*> roads;
+	std::vector<Object*> roads;
 	std::vector<Stage*> obstacles;
 	std::list<Stage*>::iterator obsIter;
 	size_t nRoads{ 100 };
@@ -20,11 +21,11 @@ private:
 private:
 	StageManager();
 public:
-	void initialize();
+	virtual void initialize() override;
 
-	void update();
+	virtual void update() override;
 
-	void render();
+	virtual void render() override;
 
 	size_t getNRoads();
 

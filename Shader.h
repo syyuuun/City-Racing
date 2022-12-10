@@ -5,6 +5,7 @@
 #include "Light.h"
 #include "CarManager.h"
 #include "StageManager.h"
+#include "ParticleManager.h"
 #include "BackGround.h"
 
 class Shader {
@@ -42,5 +43,6 @@ public:
 	friend class Light;
 	friend class CarManager;
 	friend class StageManager;
+	friend class ParticleManager;
 	friend class BackGround;
 };

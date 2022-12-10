@@ -1,6 +1,7 @@
 #pragma once
 #include "pch.h"
 #include "Sound.h"
+#include "Manager.h"
 #include "CarManager.h"
 #include "Scene.h"
 #include "TitleScene.h"
@@ -9,7 +10,7 @@
 #include "EndScene.h"
 #include "BackGround.h"
 
-class SceneManager {
+class SceneManager : public Manager {
 protected:
 	enum{ MaxNumOfScene = 4 };
 public:
@@ -25,15 +26,17 @@ private:
 public:
 	~SceneManager();
 
+	virtual void initialize() override;
+
 	void inputKeyboard(unsigned char key, int x, int y);
 
 	void inputSpecialKeyboard(int key, int x, int y);
 
 	void inputMouse(int button, int state, int x, int y);
 
-	void update();
+	virtual void update() override;
 
-	void render();
+	virtual void render() override;
 
 	void setCurrentSceneType(SceneType);
 

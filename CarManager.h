@@ -2,12 +2,13 @@
 
 #include "pch.h"
 #include "Shader.h"
+#include "Manager.h"
 #include "Car.h"
 #include "Bmw.h"
 #include "Porsche.h"
 #include "Ford.h"
 
-class CarManager {
+class CarManager : public Manager{
 public:
 	enum class CarType { BMW = 0, PORSCHE, FORD };
 private:
@@ -21,8 +22,7 @@ private:
 private:
 	CarManager();
 public:
-
-	void initialize();
+	virtual void initialize() override;
 
 	void select();
 
@@ -32,9 +32,9 @@ public:
 
 	void inputMouse(int button, int state, int x, int y);
 
-	void update();
+	virtual void update() override;
 
-	void render();
+	virtual void render() override;
 
 	void changeCar(GLint);
 

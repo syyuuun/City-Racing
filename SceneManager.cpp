@@ -19,6 +19,10 @@ SceneManager::~SceneManager()
 
 }
 
+void SceneManager::initialize()
+{
+}
+
 void SceneManager::inputKeyboard(unsigned char key, int x, int y)
 {
 	currentScene->inputKeyboard(key, x, y);

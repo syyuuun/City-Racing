@@ -4,10 +4,12 @@ void PlayScene::initialize()
 {
 	std::cout << "Enter Play Scene" << "\n";	
 
-	StageManager::getInstance()->initialize();
+	ParticleManager::getInstance()->initialize();
 
-	CarManager::getInstance()->initialize();
+	StageManager::getInstance()->initialize();
 	
+	CarManager::getInstance()->initialize();
+
 	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::PLAY);
 	
 	BackGround::getInstance()->setBGType(BackGround::BGType::PLAY);
@@ -68,14 +70,18 @@ void PlayScene::update()
 
 	// Light update
 	Light::getInstance()->update();
+
+	ParticleManager::getInstance()->update();
 }
 
 void PlayScene::render()
 {
 	// Map render
-	StageManager::getInstance()->render();
+	ParticleManager::getInstance()->render();
 
+	StageManager::getInstance()->render();
 	// Car render
+
 	CarManager::getInstance()->render();
 }
 

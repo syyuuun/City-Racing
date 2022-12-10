@@ -122,6 +122,16 @@ void Shader::glGenerate()
 		glGenBuffers(1, &(ele)->uvVbo);
 		glGenTextures(1, &(ele)->texture);
 	}
+
+	// Particles
+	for (auto& element : ParticleManager::getInstance()->particles) {
+		glGenVertexArrays(1, &(element)->vao);
+		glGenBuffers(1, &(element)->vertexVbo);
+		glGenBuffers(1, &(element)->normalVbo);
+		glGenBuffers(1, &(element)->colorVbo);
+		glGenBuffers(1, &(element)->uvVbo);
+		glGenTextures(1, &(element)->texture);
+	}
 }
 
 void Shader::initShader()
@@ -237,6 +247,42 @@ void Shader::initTexture()
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 			stbi_set_flip_vertically_on_load(true);
 			unsigned char* data = stbi_load("Resources/Map/box.jpg", &imageWidth, &imageHeight, &numberOfChannel, 0);
+			glTexImage2D(GL_TEXTURE_2D, 0, 3, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+			stbi_image_free(data);
+		}
+	}
+
+	// Particles
+	{
+		for (auto& element : ParticleManager::getInstance()->particles) {
+			int imageWidth, imageHeight, numberOfChannel;
+			glBindTexture(GL_TEXTURE_2D, element->texture);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+			stbi_set_flip_vertically_on_load(true);
+			std::mt19937 mersenne{ std::random_device{}() };
+			std::uniform_int_distribution<GLint> randomColor{ 0,3 };
+			unsigned char* data = nullptr;
+			switch (randomColor(mersenne))
+			{
+			case 0:
+				data = stbi_load("Resources/Particle/color00.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
+				break;
+			case 1:
+				data = stbi_load("Resources/Particle/color01.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
+				break;
+			case 2:
+				data = stbi_load("Resources/Particle/color02.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
+				break;
+			case 3:
+				data = stbi_load("Resources/Particle/color03.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
+				break;
+			default:
+				break;
+			}
+
 			glTexImage2D(GL_TEXTURE_2D, 0, 3, imageWidth, imageHeight, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
 			stbi_image_free(data);
 		}
@@ -358,6 +404,36 @@ void Shader::initBuffer()
 		GLint tAttribute = glGetAttribLocation(shaderProgram, "vTexCoord");
 		glVertexAttribPointer(tAttribute, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
 		glEnableVertexAttribArray(tAttribute);
+	}
+
+	// Particles
+	{
+		for (auto& element : ParticleManager::getInstance()->particles) {
+			glBindVertexArray(element->vao);
+			glBindBuffer(GL_ARRAY_BUFFER, element->vertexVbo);
+			glBufferData(GL_ARRAY_BUFFER, element->verticies.size() * sizeof(glm::vec3), element->verticies.data(), GL_STATIC_DRAW);
+			GLint pAttribute = glGetAttribLocation(shaderProgram, "vPos");
+			glVertexAttribPointer(pAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+			glEnableVertexAttribArray(pAttribute);
+
+			glBindBuffer(GL_ARRAY_BUFFER, element->normalVbo);
+			glBufferData(GL_ARRAY_BUFFER, element->normals.size() * sizeof(glm::vec3), element->normals.data(), GL_STATIC_DRAW);
+			GLint nAttribute = glGetAttribLocation(shaderProgram, "vNormal");
+			glVertexAttribPointer(nAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+			glEnableVertexAttribArray(nAttribute);
+
+			glBindBuffer(GL_ARRAY_BUFFER, element->colorVbo);
+			glBufferData(GL_ARRAY_BUFFER, element->colors.size() * sizeof(glm::vec3), element->colors.data(), GL_STATIC_DRAW);
+			GLint cAttribute = glGetAttribLocation(shaderProgram, "vColor");
+			glVertexAttribPointer(cAttribute, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), 0);
+			glEnableVertexAttribArray(cAttribute);
+
+			glBindBuffer(GL_ARRAY_BUFFER, element->uvVbo);
+			glBufferData(GL_ARRAY_BUFFER, element->uvs.size() * sizeof(glm::vec2), element->uvs.data(), GL_STATIC_DRAW);
+			GLint tAttribute = glGetAttribLocation(shaderProgram, "vTexCoord");
+			glVertexAttribPointer(tAttribute, 2, GL_FLOAT, GL_FALSE, 2 * sizeof(float), 0);
+			glEnableVertexAttribArray(tAttribute);
+		}
 	}
 
 	// Light

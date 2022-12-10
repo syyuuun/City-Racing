@@ -88,6 +88,12 @@
     <Filter Include="소스 파일\01.Object\02.Stage\01.Obstacle">
       <UniqueIdentifier>{02360390-af0c-4a8f-9d7a-f9ee6e22b933}</UniqueIdentifier>
     </Filter>
+    <Filter Include="소스 파일\01.Object\03.Particle">
+      <UniqueIdentifier>{d275cf7e-5fe5-4ecf-bd20-0e07bf871924}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06.Manager\03.ParticleManager">
+      <UniqueIdentifier>{f0346360-fb81-4be9-be2c-f64ff52b5969}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameFrameWork.cpp">
@@ -149,6 +155,12 @@
     </ClCompile>
     <ClCompile Include="Sound.cpp">
       <Filter>소스 파일\05.Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="Particle.cpp">
+      <Filter>소스 파일\01.Object\03.Particle</Filter>
+    </ClCompile>
+    <ClCompile Include="ParticleManager.cpp">
+      <Filter>소스 파일\06.Manager\03.ParticleManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -235,6 +247,15 @@
     </ClInclude>
     <ClInclude Include="SelectScene.h">
       <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\01.SelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Particle.h">
+      <Filter>소스 파일\01.Object\03.Particle</Filter>
+    </ClInclude>
+    <ClInclude Include="ParticleManager.h">
+      <Filter>소스 파일\06.Manager\03.ParticleManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>소스 파일\06.Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,7 @@
 #include "Sound.h"
 #include "SceneManager.h"
 #include "CarManager.h"
+#include "ParticleManager.h"
 
 class GameFrameWork {
 private:
