@@ -60,6 +60,9 @@ void PlayScene::update()
 	// Car update
 	CarManager::getInstance()->update();
 	
+	// Map update
+	StageManager::getInstance()->update();
+
 	// Camera update
 	Camera::getInstance()->update();
 

@@ -14,7 +14,9 @@ StageManager::StageManager()
 
 void StageManager::initialize()
 {
-
+	for (size_t i = 0; i < nObstacles; ++i) {
+			obstacles[i]->initialize();
+	}
 }
 
 void StageManager::update()

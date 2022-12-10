@@ -173,16 +173,20 @@ void Ford::update()
 			}
 		}
 		if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
-			if (rotationDegree >= -20.f) {
-				rotationDegree -= 1.f;
+			if (positionVector.x + 1.0f <= 8.0f) {
+				if (rotationDegree >= -20.f) {
+					rotationDegree -= 1.f;
+				}
+				positionVector.x += 0.1f;
 			}
-			positionVector.x += 0.1f;
 		}
 		else if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-			if (rotationDegree <= 20.f) {
-				rotationDegree += 1.f;
+			if (positionVector.x - 1.0f >= -8.0f) {
+				if (rotationDegree <= 20.f) {
+					rotationDegree += 1.f;
+				}
+				positionVector.x -= 0.1f;
 			}
-			positionVector.x -= 0.1f;
 		}
 		else {
 			rotationDegree = 0.f;
