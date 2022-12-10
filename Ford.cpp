@@ -151,6 +151,7 @@ void Ford::update()
 		rotationDegree += 1.0f;
 		break;
 	case SceneManager::SceneType::PLAY:
+		
 		if (GetAsyncKeyState(VK_UP) & 0x8000) {
 			if (speed <= 0.3f)
 				speed += 0.01f;
@@ -206,7 +207,6 @@ void Ford::update()
 				jumpVelocity = 2.0f;
 			}
 		}
-
 
 		Camera::getInstance()->getPositionVector().z -= speed;
 		Camera::getInstance()->getLookVector().z -= speed;
