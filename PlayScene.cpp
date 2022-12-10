@@ -16,12 +16,12 @@ void PlayScene::initialize()
 	
 	Camera::getInstance()->getPositionVector().y = 4.5f;
 
-	std::cout << "Camera X: " << Camera::getInstance()->getPositionVector().x << "\n";
-	std::cout << "Camera Y: " << Camera::getInstance()->getPositionVector().y << "\n";
-	std::cout << "Camera Z: " <<  Camera::getInstance()->getPositionVector().z << "\n";
-	std::cout << "Camera Look X: "<< Camera::getInstance()->getLookVector().x << "\n";
-	std::cout << "Camera Look Y: " << Camera::getInstance()->getLookVector().y << "\n";
-	std::cout << "Camera Look Z: " << Camera::getInstance()->getLookVector().x << "\n";
+	//std::cout << "Camera X: " << Camera::getInstance()->getPositionVector().x << "\n";
+	//std::cout << "Camera Y: " << Camera::getInstance()->getPositionVector().y << "\n";
+	//std::cout << "Camera Z: " <<  Camera::getInstance()->getPositionVector().z << "\n";
+	//std::cout << "Camera Look X: "<< Camera::getInstance()->getLookVector().x << "\n";
+	//std::cout << "Camera Look Y: " << Camera::getInstance()->getLookVector().y << "\n";
+	//std::cout << "Camera Look Z: " << Camera::getInstance()->getLookVector().x << "\n";
 }
 
 void PlayScene::inputKeyboard(unsigned char key, int x, int y)

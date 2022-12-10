@@ -123,7 +123,7 @@ void Shader::glGenerate()
 		glGenTextures(1, &(ele)->texture);
 	}
 
-	// Particles
+	//  Particles
 	for (auto& element : ParticleManager::getInstance()->particles) {
 		glGenVertexArrays(1, &(element)->vao);
 		glGenBuffers(1, &(element)->vertexVbo);

@@ -11,7 +11,7 @@ private:
 	std::uniform_int_distribution<GLint> randomDir{ 0,7 };
 	std::uniform_real_distribution<GLfloat> randomMoveAmount{ 0.1f,0.3f };
 	GLuint myColor;
-	GLuint dir;
+	GLint dir;
 	GLfloat moveAmount;
 public:
 	Particle();
@@ -26,5 +26,5 @@ public:
 
 	virtual void release() override;
 
-	virtual void setPositionVector(const glm::vec3&);
+	void setPositionVector(const glm::vec3&);
 };

@@ -36,4 +36,6 @@ void ParticleManager::render()
 		element->render();
 }
 
+size_t ParticleManager::getNParticle() { return nParticle; }
+
 bool& ParticleManager::isOnParticleSystem() { return onParticleSystem; }

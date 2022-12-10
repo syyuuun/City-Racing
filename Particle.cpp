@@ -4,8 +4,8 @@ Particle::Particle()
 {
 	readObj("sphere.obj");
 	myColor = randomColor(mersenne);
-	positionVector = glm::vec3(0.0f, 0.5f, 5.0f);
-	scaleVector = glm::vec3{ 0.1f,0.1f,0.1f};
+	positionVector = glm::vec3(0.0f, 0.0f, 0.0f);
+	scaleVector = glm::vec3{ 0.0f,0.0f,0.0f};
 	moveAmount = randomMoveAmount(mersenne);
 	dir = randomDir(mersenne);
 }
@@ -210,5 +210,6 @@ void Particle::release()
 void Particle::setPositionVector(const glm::vec3& pos)
 {
 	// pos: ºÎµúÈù À§Ä¡ 
+	scaleVector = glm::vec3{ 0.1f,0.1f, 0.1f };
 	positionVector = pos;
 }

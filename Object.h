@@ -33,7 +33,6 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 	virtual void release() = 0;
-	virtual void setPositionVector(const glm::vec3&) = 0;
 	
 	friend class Shader;
 };

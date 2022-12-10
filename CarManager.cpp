@@ -61,15 +61,17 @@ void CarManager::update()
 			std::cout << "col" << std::endl;
 			currentCar->collide();
 			StageManager::getInstance()->setColideObstacle(i);
-			// particle 나타나는 위치 설정 + particle 호출
-			//for (auto& element : ParticleManager::getInstance()->particles) {
-			//	 // 충돌한 부분의 위치 삽입
-			//	element->setPositionVector()
-			//}
+
+			for (const auto& element : ParticleManager::getInstance()->particles) {
+				Particle* pParticle = dynamic_cast<Particle*>(element);
+				pParticle->setPositionVector(glm::vec3(v.x, v.y, v.z - 1.3f));
+			}
+
 			ParticleManager::getInstance()->isOnParticleSystem() = true;
 			break;
 		}
 	}
+
 	std::cout << "Car position X: " << currentCar->getPositionVector().x << "\n";
 	std::cout << "Car position Y: " << currentCar->getPositionVector().y << "\n";
 	std::cout << "Car position Z: " << currentCar->getPositionVector().z << "\n";

@@ -9,6 +9,7 @@ class ParticleManager : public Manager {
 private:
 	static ParticleManager* pInst;
 	std::list<Object*> particles;
+	std::list<Object*>::iterator particleIter;
 	size_t nParticle{ 20 };
 	bool onParticleSystem{ false };
 private:
@@ -21,6 +22,8 @@ public:
 	virtual void update() override;
 	 
 	virtual void render() override;
+
+	size_t getNParticle();
 
 	bool& isOnParticleSystem();
 
