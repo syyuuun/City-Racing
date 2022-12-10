@@ -169,16 +169,20 @@ void Porsche::update()
 			}
 		}
 		if (GetAsyncKeyState(VK_RIGHT) & 0x8000) {
-			if (rotationDegree >= -20.f) {
-				rotationDegree -= 1.f;
+			if (positionVector.x + 1.0f <= 8.0f) {
+				if (rotationDegree >= -20.f) {
+					rotationDegree -= 1.f;
+				}
+				positionVector.x += 0.1f;
 			}
-			positionVector.x += 0.1f;
 		}
 		else if (GetAsyncKeyState(VK_LEFT) & 0x8000) {
-			if (rotationDegree <= 20.f) {
-				rotationDegree += 1.f;
+			if (positionVector.x - 1.0f >= -8.0f) {
+				if (rotationDegree <= 20.f) {
+					rotationDegree += 1.f;
+				}
+				positionVector.x -= 0.1f;
 			}
-			positionVector.x -= 0.1f;
 		}
 		else {
 			rotationDegree = 0.f;
@@ -232,11 +236,6 @@ void Porsche::render()
 	glBindTexture(GL_TEXTURE_2D, texture);
 	glDrawArrays(GL_TRIANGLES, 0, verticies.size());
 
-	GLUquadricObj* qobj = gluNewQuadric(); // 객체 생성하기
-	gluQuadricDrawStyle(qobj, GLU_LINE); // 도형 스타일
-	gluQuadricNormals(qobj, GLU_SMOOTH); // 생략 가능
-	gluQuadricOrientation(qobj, GLU_OUTSIDE); // 생략 가능
-	gluSphere(qobj, 1.0, 10, 10);
 }
 
 void Porsche::release()

@@ -9,7 +9,9 @@ Obstacle::Obstacle(const glm::vec3& pos, const glm::vec3& scale)
 
 void Obstacle::initialize()
 {
-
+	std::default_random_engine geng;
+	std::uniform_real_distribution<> dist3(0.05, 0.5);
+	speed = dist3(geng);
 }
 
 void Obstacle::readObj(const char* objName)
@@ -130,7 +132,13 @@ void Obstacle::readObj(const char* objName)
 
 void Obstacle::update()
 {
-
+	if (positionVector.x - 1.0f <= -8.0f) {
+		direction *= -1;
+	}
+	else if (positionVector.x + 1.0f >= 8.0f) {
+		direction *= -1;
+	}
+	positionVector.x += speed * direction;
 }
 
 void Obstacle::render()
