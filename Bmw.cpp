@@ -212,6 +212,14 @@ void Bmw::update()
 			}
 		}
 
+		if (GetAsyncKeyState(VK_CONTROL) & 0x8000) {
+			if (speed < 0.6f)
+				speed += 0.01f;
+		}
+		else {
+			if (speed >= 0.3f)
+				speed -= 0.01f;
+		}
 
 		Camera::getInstance()->getPositionVector().z -= speed;
 		Camera::getInstance()->getLookVector().z -= speed;

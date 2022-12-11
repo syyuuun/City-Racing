@@ -25,7 +25,6 @@ public:
 
 	size_t getNParticle();
 
-
 	bool& isOnParticleSystem();
 
 	friend class Shader;
