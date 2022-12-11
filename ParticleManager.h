@@ -10,7 +10,7 @@ private:
 	static ParticleManager* pInst;
 	std::list<Object*> particles;
 	std::list<Object*>::iterator particleIter;
-	size_t nParticle{ 20 };
+	size_t nParticle{ 50 };
 	bool onParticleSystem{ false };
 private:
 	ParticleManager();
