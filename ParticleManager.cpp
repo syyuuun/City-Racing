@@ -4,8 +4,9 @@ ParticleManager* ParticleManager::pInst = nullptr;
 
 ParticleManager::ParticleManager()
 {
-	for(size_t i = 0; i < nParticle; ++i)
+	for (size_t i = 0; i < nParticle; ++i) {
 		particles.emplace_back(new Particle);
+	}
 }
 
 ParticleManager* ParticleManager::getInstance()
@@ -32,8 +33,10 @@ void ParticleManager::update()
 
 void ParticleManager::render()
 {
-	for (const auto& element : particles)
-		element->render();
+	if (onParticleSystem) {
+		for (const auto& element : particles)
+			element->render();
+	}
 }
 
 size_t ParticleManager::getNParticle() { return nParticle; }

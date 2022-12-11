@@ -83,6 +83,8 @@ void PlayScene::render()
 	// Car render
 
 	CarManager::getInstance()->render();
+
+	ParticleManager::getInstance()->render();
 }
 
 void PlayScene::release()

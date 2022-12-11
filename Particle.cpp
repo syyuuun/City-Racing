@@ -1,5 +1,9 @@
 #include "Particle.h"
 
+std::uniform_int_distribution<GLint> randomDir{ 0,7 };
+std::uniform_real_distribution<GLfloat> randomMoveAmount{ 0.1f,0.3f };
+std::mt19937 mersenne;
+std::uniform_int_distribution<GLint> randomColor{ 0,3 };
 Particle::Particle()
 {
 	readObj("sphere.obj");

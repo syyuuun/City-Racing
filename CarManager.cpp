@@ -61,7 +61,6 @@ void CarManager::update()
 			std::cout << "col" << std::endl;
 			currentCar->collide();
 			StageManager::getInstance()->setColideObstacle(i);
-
 			for (const auto& element : ParticleManager::getInstance()->particles) {
 				Particle* pParticle = dynamic_cast<Particle*>(element);
 				pParticle->setPositionVector(glm::vec3(v.x, v.y, v.z - 1.3f));
