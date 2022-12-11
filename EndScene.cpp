@@ -6,6 +6,7 @@ void EndScene::initialize()
 	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::PLAY);
 	BackGround::getInstance()->setBGType(BackGround::BGType::END);
 	Camera::getInstance()->getPositionVector() = glm::vec3{ 0.0f,0.0f,10.0f };
+	Light::getInstance()->getPosition() = glm::vec3{ 0.0f,5.0f,0.0f };
 	Camera::getInstance()->getLookVector() = glm::vec3{ 0.0f,0.0f,0.0f };
 }
 

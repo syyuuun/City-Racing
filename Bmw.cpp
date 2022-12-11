@@ -143,6 +143,12 @@ void Bmw::inputMouse(int button, int state, int x, int y)
 
 void Bmw::update()
 {
+	if (collisionCount > 3) {
+		collisionCount = 0;
+		SceneManager::getInstance()->changeScene(SceneManager::SceneType::FAIL);
+		BackGround::getInstance()->setBGType(BackGround::BGType::FAIL);
+	}
+
 	switch (SceneManager::getInstance()->getCurrentSceneType())
 	{
 	case SceneManager::SceneType::SELECT:
@@ -261,3 +267,5 @@ void Bmw::collide()
 	speed = 0.0f;
 	rotationDegree = 90.0f;
 }
+
+GLint& Bmw::getCollisionCount() { return collisionCount; }

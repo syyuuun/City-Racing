@@ -7,14 +7,15 @@
 #include "TitleScene.h"
 #include "SelectScene.h"
 #include "PlayScene.h"
+#include "FailScene.h"
 #include "EndScene.h"
 #include "BackGround.h"
 
 class SceneManager : public Manager {
 protected:
-	enum{ MaxNumOfScene = 4 };
+	enum{ MaxNumOfScene = 5 };
 public:
-	enum class SceneType { TITLE = 0, SELECT, PLAY, END };
+	enum class SceneType { TITLE = 0, SELECT, PLAY, FAIL, END };
 private:
 	static SceneManager* pInst;
 	static GLuint currentSceneIndex;

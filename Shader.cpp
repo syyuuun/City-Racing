@@ -91,7 +91,7 @@ void Shader::glGenerate()
 	glGenBuffers(1, &(BackGround::getInstance()->normalVbo));
 	glGenBuffers(1, &(BackGround::getInstance()->colorVbo));
 	glGenBuffers(1, &(BackGround::getInstance()->uvVbo));
-	glGenTextures(4, (BackGround::getInstance()->textures));
+	glGenTextures(5, (BackGround::getInstance()->textures));
 
 	// Cars
 	for (size_t i = 0; i < CarManager::getInstance()->nCar; ++i) {
@@ -156,7 +156,7 @@ void Shader::initTexture()
 {
 	// BackGround
 	{
-		for (size_t i = 0; i < 4; ++i) {
+		for (size_t i = 0; i < 5; ++i) {
 			int imageWidth, imageHeight, numberOfChannel;
 			glBindTexture(GL_TEXTURE_2D, BackGround::getInstance()->textures[i]);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
@@ -177,6 +177,9 @@ void Shader::initTexture()
 				data = stbi_load("Resources/BackGround/select.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
 				break;
 			case 3:
+				data = stbi_load("Resources/BackGround/fail.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
+				break;
+			case 4:
 				data = stbi_load("Resources/BackGround/end.png", &imageWidth, &imageHeight, &numberOfChannel, 0);
 				break;
 			default:

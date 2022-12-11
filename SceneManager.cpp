@@ -7,10 +7,10 @@ SceneManager::SceneManager()
 	scenes.emplace_back(new TitleScene);
 	scenes.emplace_back(new SelectScene);
 	scenes.emplace_back(new PlayScene);
+	scenes.emplace_back(new FailScene);
 	scenes.emplace_back(new EndScene);
-	
+
 	currentScene = scenes[GLuint(SceneManager::SceneType::TITLE)];
-	
 	currentScene->initialize();
 }
 

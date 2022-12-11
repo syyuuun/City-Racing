@@ -4,6 +4,16 @@ void PlayScene::initialize()
 {
 	std::cout << "Enter Play Scene" << "\n";	
 
+	// 차량 위치 초기화
+
+	// 카메라 초기화 
+
+	// 장애물 초기화 
+
+	// 맵 초기화 
+
+	// 라이트 초기화 
+
 	ParticleManager::getInstance()->initialize();
 
 	StageManager::getInstance()->initialize();
@@ -15,13 +25,6 @@ void PlayScene::initialize()
 	BackGround::getInstance()->setBGType(BackGround::BGType::PLAY);
 	
 	Camera::getInstance()->getPositionVector().y = 4.5f;
-
-	//std::cout << "Camera X: " << Camera::getInstance()->getPositionVector().x << "\n";
-	//std::cout << "Camera Y: " << Camera::getInstance()->getPositionVector().y << "\n";
-	//std::cout << "Camera Z: " <<  Camera::getInstance()->getPositionVector().z << "\n";
-	//std::cout << "Camera Look X: "<< Camera::getInstance()->getLookVector().x << "\n";
-	//std::cout << "Camera Look Y: " << Camera::getInstance()->getLookVector().y << "\n";
-	//std::cout << "Camera Look Z: " << Camera::getInstance()->getLookVector().x << "\n";
 }
 
 void PlayScene::inputKeyboard(unsigned char key, int x, int y)

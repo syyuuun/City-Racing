@@ -4,10 +4,10 @@
 #include "Shader.h"
 class BackGround : public Object {
 public:
-	enum class BGType{TITLE, SELECT, PLAY, END};
+	enum class BGType{TITLE, SELECT, PLAY, FAIL, END};
 private:
 	static BackGround* pInst;
-	GLuint textures[4];
+	GLuint textures[5];
 	BGType bg{ BGType::TITLE};
 private:
 	BackGround();

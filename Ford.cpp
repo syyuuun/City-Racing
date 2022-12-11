@@ -145,6 +145,12 @@ void Ford::inputMouse(int button, int state, int x, int y)
 
 void Ford::update()
 {
+	if (collisionCount > 3) {
+		collisionCount = 0;
+		SceneManager::getInstance()->changeScene(SceneManager::SceneType::FAIL);
+		BackGround::getInstance()->setBGType(BackGround::BGType::FAIL);
+	}
+
 	switch (SceneManager::getInstance()->getCurrentSceneType())
 	{
 	case SceneManager::SceneType::SELECT:
@@ -260,3 +266,5 @@ void Ford::collide()
 	speed = 0.0f;
 	rotationDegree = 0;
 }
+
+GLint& Ford::getCollisionCount() { return collisionCount; }

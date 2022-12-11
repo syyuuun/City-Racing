@@ -169,8 +169,11 @@ void BackGround::render()
 	case BackGround::BGType::PLAY:
 		glBindTexture(GL_TEXTURE_2D, textures[2]);
 		break;
-	case BackGround::BGType::END:
+	case BackGround::BGType::FAIL:
 		glBindTexture(GL_TEXTURE_2D, textures[3]);
+		break;
+	case BackGround::BGType::END:
+		glBindTexture(GL_TEXTURE_2D, textures[4]);
 		break;
 	default:
 		break;

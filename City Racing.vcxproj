@@ -148,6 +148,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="CarManager.cpp" />
     <ClCompile Include="EndScene.cpp" />
+    <ClCompile Include="FailScene.cpp" />
     <ClCompile Include="Ford.cpp" />
     <ClCompile Include="GameFrameWork.cpp" />
     <ClCompile Include="Light.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Define.h" />
     <ClInclude Include="EndScene.h" />
     <ClInclude Include="Enum.h" />
+    <ClInclude Include="FailScene.h" />
     <ClInclude Include="Ford.h" />
     <ClInclude Include="GameFrameWork.h" />
     <ClInclude Include="Include.h" />

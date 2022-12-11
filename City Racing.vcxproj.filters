@@ -61,9 +61,6 @@
     <Filter Include="소스 파일\06.Manager\00.SceneManager\00.Scene\02.PlayScene">
       <UniqueIdentifier>{18d1e26c-4710-4be0-b59f-c5fabc742364}</UniqueIdentifier>
     </Filter>
-    <Filter Include="소스 파일\06.Manager\00.SceneManager\00.Scene\03.EndScene">
-      <UniqueIdentifier>{a2d9de79-dc98-4305-a953-e47db24dbe1b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\06.Manager\00.SceneManager\00.Scene\01.SelectScene">
       <UniqueIdentifier>{12610a01-d6eb-42bb-9180-514dbfd63ae0}</UniqueIdentifier>
     </Filter>
@@ -93,6 +90,12 @@
     </Filter>
     <Filter Include="소스 파일\06.Manager\03.ParticleManager">
       <UniqueIdentifier>{f0346360-fb81-4be9-be2c-f64ff52b5969}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06.Manager\00.SceneManager\00.Scene\04.EndScene">
+      <UniqueIdentifier>{a2d9de79-dc98-4305-a953-e47db24dbe1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\06.Manager\00.SceneManager\00.Scene\03.FailScene">
+      <UniqueIdentifier>{28250c89-2dff-4d03-8366-65e181285ea5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -124,7 +127,7 @@
       <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\02.PlayScene</Filter>
     </ClCompile>
     <ClCompile Include="EndScene.cpp">
-      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\03.EndScene</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\04.EndScene</Filter>
     </ClCompile>
     <ClCompile Include="SelectScene.cpp">
       <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\01.SelectScene</Filter>
@@ -161,6 +164,9 @@
     </ClCompile>
     <ClCompile Include="ParticleManager.cpp">
       <Filter>소스 파일\06.Manager\03.ParticleManager</Filter>
+    </ClCompile>
+    <ClCompile Include="FailScene.cpp">
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\03.FailScene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -210,7 +216,7 @@
       <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\00.TitleScene</Filter>
     </ClInclude>
     <ClInclude Include="EndScene.h">
-      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\03.EndScene</Filter>
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\04.EndScene</Filter>
     </ClInclude>
     <ClInclude Include="PlayScene.h">
       <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\02.PlayScene</Filter>
@@ -256,6 +262,9 @@
     </ClInclude>
     <ClInclude Include="Manager.h">
       <Filter>소스 파일\06.Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="FailScene.h">
+      <Filter>소스 파일\06.Manager\00.SceneManager\00.Scene\03.FailScene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

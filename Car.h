@@ -15,6 +15,7 @@ protected:
 	GLfloat mass{ 0.2f };
 	GLfloat jumpVelocity{ 2.0f };
 	GLfloat jumpForce{ 0.0f };
+	GLint collisionCount{ 0 };
 public:
 	virtual void inputKeyboard(unsigned char, int, int) = 0;
 
@@ -31,6 +32,8 @@ public:
 	const GLfloat& getJumpForce() const { return jumpForce; }
 
 	virtual void collide() = 0;
+
+	virtual GLint& getCollisionCount() = 0;
 
 	friend class Shader;
 };

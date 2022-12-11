@@ -21,7 +21,9 @@ public:
 
 	virtual void release() override;
 
-	void collide() override;
+	virtual void collide() override;
+
+	virtual GLint& getCollisionCount() override;
 
 	friend class Shader;
 };

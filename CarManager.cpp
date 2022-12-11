@@ -60,6 +60,7 @@ void CarManager::update()
 			&& v.y - t.y < 1.0) {
 			std::cout << "col" << std::endl;
 			currentCar->collide();
+			currentCar->getCollisionCount()++;
 			StageManager::getInstance()->setColideObstacle(i);
 			for (const auto& element : ParticleManager::getInstance()->particles) {
 				Particle* pParticle = dynamic_cast<Particle*>(element);
