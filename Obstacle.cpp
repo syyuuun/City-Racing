@@ -10,8 +10,10 @@ Obstacle::Obstacle(const glm::vec3& pos, const glm::vec3& scale)
 void Obstacle::initialize()
 {
 	std::default_random_engine geng;
-	std::uniform_real_distribution<> dist3(0.05, 0.5);
+	std::uniform_real_distribution<GLfloat> dist3(0.05f, 0.5f);
 	speed = dist3(geng);
+	if (onCollision)
+		onCollision = false;
 }
 
 void Obstacle::readObj(const char* objName)

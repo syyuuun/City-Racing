@@ -23,7 +23,7 @@ public:
 
 	virtual void inputMouse(int, int, int, int) = 0;
 
-	const glm::vec3& getPositionVector() const { return positionVector; }
+	glm::vec3& getPositionVector()  { return positionVector; }
 
 	bool& isOnJump() { return onJump; }
 

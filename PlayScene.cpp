@@ -4,27 +4,23 @@ void PlayScene::initialize()
 {
 	std::cout << "Enter Play Scene" << "\n";	
 
-	// 차량 위치 초기화
-
-	// 카메라 초기화 
-
-	// 장애물 초기화 
-
-	// 맵 초기화 
-
-	// 라이트 초기화 
-
-	ParticleManager::getInstance()->initialize();
-
-	StageManager::getInstance()->initialize();
-	
+	// 차량 초기화
 	CarManager::getInstance()->initialize();
 
-	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::PLAY);
-	
+	// 카메라 초기화 
+	Camera::getInstance()->getPositionVector().z = 10.0f;
+	Camera::getInstance()->getPositionVector().y = 5.0f;
+
+	// 라이트 초기화 
+	Light::getInstance()->initialize();
+
+	// 장애물 초기화 맵 초기화 
+	StageManager::getInstance()->initialize();
 	BackGround::getInstance()->setBGType(BackGround::BGType::PLAY);
-	
-	Camera::getInstance()->getPositionVector().y = 4.5f;
+	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::PLAY);
+
+	// 파티클 초기화
+	ParticleManager::getInstance()->initialize();
 }
 
 void PlayScene::inputKeyboard(unsigned char key, int x, int y)

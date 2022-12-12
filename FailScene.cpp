@@ -5,6 +5,7 @@ void FailScene::initialize()
 	std::cout << "Enter Fail Scene" << "\n";
 	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::FAIL);
 	BackGround::getInstance()->setBGType(BackGround::BGType::FAIL);
+	Light::getInstance()->getPosition() = glm::vec3{ 0.0,0.0f,5.0f };
 	Camera::getInstance()->getPositionVector() = glm::vec3{ 0.0f,0.0f,10.0f };
 	Camera::getInstance()->getLookVector() = glm::vec3{ 0.0f,0.0f,0.0f };
 }

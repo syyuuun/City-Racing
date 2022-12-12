@@ -11,13 +11,9 @@ private:
 private:
 	Light();
 public:
-	static Light* getInstance()
-	{
-		if (nullptr == pInst)
-			pInst = new Light;
+	static Light* getInstance();
 
-		return pInst;
-	}
+	void initialize();
 
 	glm::vec3& getPosition();
 

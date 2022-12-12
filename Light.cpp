@@ -7,6 +7,19 @@ Light::Light()
 
 }
 
+Light* Light::getInstance()
+{
+	if (nullptr == pInst)
+		pInst = new Light;
+
+	return pInst;
+}
+
+void Light::initialize()
+{
+	positionVector = glm::vec3{ 0.0f,1.0f,0.0f };
+}
+
 glm::vec3& Light::getPosition() { return positionVector; }
 
 glm::vec3& Light::getLightColor() { return lightColorVector; }
