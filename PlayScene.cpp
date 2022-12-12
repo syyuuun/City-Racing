@@ -19,8 +19,6 @@ void PlayScene::initialize()
 	// 라이트 초기화 
 	Light::getInstance()->initialize();
 
-
-
 	// 파티클 초기화
 	ParticleManager::getInstance()->initialize();
 }

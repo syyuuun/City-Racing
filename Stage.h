@@ -6,6 +6,7 @@
 #include "StageManager.h"
 
 class Stage : public Object {
+protected:
 	bool onCollision{ false };
 public:
 	friend class Shader;

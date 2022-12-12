@@ -5,7 +5,7 @@ class Obstacle : public Stage {
 private:
 	std::mt19937 mersenne{ std::random_device{}() };
 	std::uniform_int_distribution<GLint> uiDir{ -1,1 };
-	bool onCollision{ false };
+	//bool onCollision{ false };
 	int direction{ uiDir(mersenne) };
 	float speed{ 0.0f };
 public:

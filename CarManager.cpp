@@ -47,6 +47,7 @@ void CarManager::inputMouse(int button, int state, int x, int y)
 void CarManager::update()
 {
 	currentCar->update();
+
 	int n = StageManager::getInstance()->getNObstacles();
 	glm::vec3 v = currentCar->getPositionVector();
 	for (int i = 0; i < n; ++i) {
@@ -62,6 +63,7 @@ void CarManager::update()
 			currentCar->collide();
 			currentCar->getCollisionCount()++;
 			StageManager::getInstance()->setColideObstacle(i);
+
 			for (const auto& element : ParticleManager::getInstance()->particles) {
 				Particle* pParticle = dynamic_cast<Particle*>(element);
 				pParticle->setPositionVector(glm::vec3(v.x, v.y, v.z - 1.3f));
@@ -71,10 +73,6 @@ void CarManager::update()
 			break;
 		}
 	}
-
-	//std::cout << "Car position X: " << currentCar->getPositionVector().x << "\n";
-	//std::cout << "Car position Y: " << currentCar->getPositionVector().y << "\n";
-	//std::cout << "Car position Z: " << currentCar->getPositionVector().z << "\n";
 }
 
 void CarManager::render()
