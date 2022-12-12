@@ -37,6 +37,9 @@ void PlayScene::inputKeyboard(unsigned char key, int x, int y)
 	case '1':
 		Camera::getInstance()->setPerspective(Camera::Perspective::ONE);
 		break;
+	case '2':
+		Camera::getInstance()->setPerspective(Camera::Perspective::TWO);
+		break;
 		// 3ÀÎÄª ½ÃÁ¡ 
 	case '3':
 		Camera::getInstance()->setPerspective(Camera::Perspective::THIRD);

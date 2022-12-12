@@ -5,7 +5,7 @@
 
 class Camera {
 public:
-	enum class Perspective{ONE,THIRD};
+	enum class Perspective{ONE, TWO, THIRD};
 private:
 	static Camera* pInst;
 	glm::vec3 positionVector{ glm::vec3{0.0f,5.0f,10.0f} };

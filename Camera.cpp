@@ -63,6 +63,14 @@ void Camera::update()
 			lookVector.y = positionVector.y;
 			lookVector.z = positionVector.z - 0.5f;
 			break;
+		case Camera::Perspective::TWO:
+			positionVector.x = 0.0f;
+			positionVector.y = 2.5f;
+			positionVector.z = CarManager::getInstance()->getCurrentCar()->getPositionVector().z + 5.0f;
+			lookVector.x = 0.0f;
+			lookVector.y = 0.3f;
+			lookVector.z = CarManager::getInstance()->getCurrentCar()->getPositionVector().z;
+			break;
 		case Camera::Perspective::THIRD:
 			positionVector.x = 0.0f;
 			positionVector.y = 4.5f;
