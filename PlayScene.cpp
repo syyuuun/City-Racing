@@ -4,6 +4,11 @@ void PlayScene::initialize()
 {
 	std::cout << "Enter Play Scene" << "\n";	
 
+	// 장애물 초기화 맵 초기화 
+	StageManager::getInstance()->initialize();
+	BackGround::getInstance()->setBGType(BackGround::BGType::PLAY);
+	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::PLAY);
+
 	// 차량 초기화
 	CarManager::getInstance()->initialize();
 
@@ -14,10 +19,7 @@ void PlayScene::initialize()
 	// 라이트 초기화 
 	Light::getInstance()->initialize();
 
-	// 장애물 초기화 맵 초기화 
-	StageManager::getInstance()->initialize();
-	BackGround::getInstance()->setBGType(BackGround::BGType::PLAY);
-	SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::PLAY);
+
 
 	// 파티클 초기화
 	ParticleManager::getInstance()->initialize();
