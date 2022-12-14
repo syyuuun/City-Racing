@@ -14,7 +14,12 @@ private:
 private:
 	Sound();
 public:
+	~Sound();
+
+
 	void initialize();
+
+	void release();
 	
 	void play(SoundType type);
 
