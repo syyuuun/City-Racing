@@ -21,6 +21,7 @@ void PlayScene::initialize()
 
 	// 파티클 초기화
 	ParticleManager::getInstance()->initialize();
+
 }
 
 void PlayScene::inputKeyboard(unsigned char key, int x, int y)

@@ -73,6 +73,10 @@ void CarManager::update()
 			break;
 		}
 	}
+
+	std::cout << "Car Position X: " << currentCar->getPositionVector().x << "\n";
+	std::cout << "Car Position Y: " << currentCar->getPositionVector().y << "\n";
+	std::cout << "Car Position Z: " << currentCar->getPositionVector().z << "\n";
 }
 
 void CarManager::render()
