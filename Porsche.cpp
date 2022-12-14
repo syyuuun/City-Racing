@@ -142,7 +142,7 @@ void Porsche::inputMouse(int button, int state, int x, int y)
 
 void Porsche::update()
 {
-	if (collisionCount > 3) {
+	if (collisionCount >= 3) {
 		collisionCount = 0;
 		SceneManager::getInstance()->changeScene(SceneManager::SceneType::FAIL);
 		BackGround::getInstance()->setBGType(BackGround::BGType::FAIL);

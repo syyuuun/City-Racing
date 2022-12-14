@@ -29,7 +29,7 @@ void PlayScene::inputKeyboard(unsigned char key, int x, int y)
 	switch (key)
 	{
 	case VK_ESCAPE:
-		SceneManager::getInstance()->changeScene(SceneManager::SceneType::END);
+		SceneManager::getInstance()->changeScene(SceneManager::SceneType::SELECT);
 		break;
 	case VK_SPACE:
 		Sound::getInstance()->play(Sound::SoundType::JUMP);

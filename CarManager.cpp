@@ -77,6 +77,10 @@ void CarManager::update()
 	std::cout << "Car Position X: " << currentCar->getPositionVector().x << "\n";
 	std::cout << "Car Position Y: " << currentCar->getPositionVector().y << "\n";
 	std::cout << "Car Position Z: " << currentCar->getPositionVector().z << "\n";
+	
+	if (v.z <= -2000) {
+		SceneManager::getInstance()->setCurrentSceneType(SceneManager::SceneType::END);
+	}
 }
 
 void CarManager::render()
